@@ -1,4 +1,4 @@
-package trash;
+package semesterProject;
 
 public class Player {
 private String name;
