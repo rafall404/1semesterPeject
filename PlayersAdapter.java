@@ -43,4 +43,19 @@ public PlayerList getAllAvaliablePlayers() {
 	
 	return players.getAllAvailablePlayers();
 }
+
+public void savePlayers(PlayersList players) {
+	try
+	{
+	mfio.writeToFile(fileName, players);
+	}
+	catch (FileNotFoundException e)
+	{
+	System.out.println("File not found");
+	}
+	catch (IOException e)
+	{
+	System.out.println("IO Error writing to file");
+	}
+}
 }
