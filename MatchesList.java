@@ -1,4 +1,4 @@
-package VIAClubManagementSystem;
+package semesterProject;
 
 import java.util.ArrayList;
 
