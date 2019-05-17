@@ -14,7 +14,6 @@ public class MyDate
       this.month = m;
       this.year = y;
    }
-   
 
    public MyDate()
    {
@@ -25,7 +24,7 @@ public class MyDate
 
    public String toString()
    {
-      return " "+day + "/" + month + "/" + year;
+      return " " + day + "/" + month + "/" + year;
    }
 
    public int getYear()
@@ -232,13 +231,12 @@ public class MyDate
 
    public boolean equals(Object obj)
    {
-     if (!(obj instanceof MyDate)) {
-        return false;
-     }
-     MyDate other = (MyDate)obj;
-     return day == other.day &&
-           month == other.month &&
-           year == other.year;
+      if (!(obj instanceof MyDate))
+      {
+         return false;
+      }
+      MyDate other = (MyDate) obj;
+      return day == other.day && month == other.month && year == other.year;
    }
 
    public MyDate copy()
@@ -267,17 +265,17 @@ public class MyDate
       {
          return true;
       }
-      else if (year== date2.year && month < date2.month)
+      else if (year == date2.year && month < date2.month)
       {
          return true;
       }
-      else if(year == date2.year && month == date2.month && day < date2.day)
+      else if (year == date2.year && month == date2.month && day < date2.day)
       {
          return true;
       }
-        else
-        {
-            return false;
+      else
+      {
+         return false;
       }
    }
 
@@ -290,5 +288,5 @@ public class MyDate
       MyDate d = new MyDate(currentDay, currentMonth, currentYear);
       return d;
    }
-   
+
 }
