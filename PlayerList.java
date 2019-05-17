@@ -52,15 +52,15 @@ public class PlayerList {
 	}
 	 
 	
-	public Player getPlayerbyPosition(char Position)
+	public Player getPlayersbyPosition(char Position)
 	{
+		ArrayList<Player> p= new ArrayList<Player>();
 		for(int i=0; i<player.size();i++)
 		{
-			if(player.get(i).getPosition().equals(Position))
-				return player.get(i);
-		     
+			if(player.get(i).getPosition.equals(Position))
+		     p.add(player.get(i));
 		}
-		return null;
+		return (Player[])p.toArray();
 	} 
 	
 	
