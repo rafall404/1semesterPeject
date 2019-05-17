@@ -5,11 +5,8 @@ public class ProgramMediator
   private MatchesList matchesList;
   private PlayerList playerList;
   
-  public ProgramMediator(MatchesList matchesList, PlayerList playerList)
-  {
-	  this.matchesList= matchesList;
-	  this.playerList= playerList;
-	  
+  public ProgramMediator()
+  { 
   }
   
   public PlayerList getPlayerList()

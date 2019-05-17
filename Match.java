@@ -9,14 +9,15 @@ public class Match
    private MyDate date;
    private String place;
    private String opponent;
-   private PlayerList list;
+   private PlayerList team;
 
    public Match(String type, MyDate date, String place, String opponent)
    {
       this.type = type;
-      this.date = new MyDate();
+      this.date = date;
       this.place = place;
       this.opponent = opponent;
+      team = new PlayerList();
    }
 
    public Match(String type, MyDate date, String place)
