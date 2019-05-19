@@ -1,3 +1,5 @@
+package semesterProject;
+
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

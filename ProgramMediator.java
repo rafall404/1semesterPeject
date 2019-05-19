@@ -1,17 +1,25 @@
+package semesterProject;
+
 
 
 public class ProgramMediator
 {
   private MatchesList matchesList;
   private PlayerList playerList;
+  private PlayersAdapter playerAdapter;
+  private MatchesAdapter matchesAdapter;
   
   public ProgramMediator()
   { 
+     MatchesList matches = new MatchesList();
+     PlayerList players = new PlayerList();
+     this.playerAdapter = new PlayersAdapter("somethingoriginallikeadidas.png");
+     this.matchesAdapter = new MatchesAdapter("somethingoriginallikeadidas.bin");
   }
   
-  public PlayerList getPlayerList()
+  public void addPlayer()
   {
-	  return playerList;
+	 players
   }
   
   public void removePlayer(Player player)

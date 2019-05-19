@@ -62,7 +62,7 @@ public class Player
       this.isInjured = isInjured;
    }
 
-   public boolean getIsInjured()
+   public boolean isInjured()
    {
       return isInjured;
    }
@@ -72,7 +72,7 @@ public class Player
       this.isSuspended = isSuspended;
    }
 
-   public boolean getIsSuspended()
+   public boolean isSuspended()
    {
       return isSuspended;
    }

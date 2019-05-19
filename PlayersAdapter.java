@@ -1,23 +1,23 @@
-package trash;
+package semesterProject;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
 public class PlayersAdapter {
-	private MyFileIo fileIo;
+	private MyFileIO fileIo;
 	private String fileName;
-}
+
 
 public PlayersAdapter(String fileName) {
-	this.fileIo= new MyFileIo();
+	this.fileIo= new MyFileIO();
 	this.fileName=fileName;
 }
 
-public PlayersList getAllPlayers() {
-	PlayersList players = new PlayersList();
+public PlayerList loadAllPlayers() {
+	PlayerList players = null;
 	
 	try {
-		players = (PlayersList) fileIo.readObjectFromFile(fileName);
+		players = (PlayerList) fileIo.readObjectFromFile(fileName);
 	}catch(FileNotFoundException e) {
 		System.out.println("File not found");
 	}catch(IOException e) {
@@ -28,26 +28,11 @@ public PlayersList getAllPlayers() {
 	return players;
 }
 
-public PlayerList getAllAvaliablePlayers() {
-	PlayersList players = new PlayersList();
-	
-	try {
-		players = (PlayersList) fileIo.readObjectFromFile(fileName);
-	}catch(FileNotFoundException e) {
-		System.out.println("File not found");
-	}catch(IOException e) {
-		System.out.println("IO Error reading file");
-	}catch(ClassNotFoundException e) {
-		System.out.println("Class Not Found");
-	}
-	
-	return players.getAllAvailablePlayers();
-}
 
-public void savePlayers(PlayersList players) {
+public void savePlayers(PlayerList players) {
 	try
 	{
-	mfio.writeToFile(fileName, players);
+	fileIo.writeToFile(fileName, players);
 	}
 	catch (FileNotFoundException e)
 	{
