@@ -11,26 +11,24 @@ public class ProgramMediator
   
   public ProgramMediator()
   { 
-     MatchesList matches = new MatchesList();
-     PlayerList players = new PlayerList();
-     this.playerAdapter = new PlayersAdapter("somethingoriginallikeadidas.png");
-     this.matchesAdapter = new MatchesAdapter("somethingoriginallikeadidas.bin");
+     this.playerAdapter = new PlayersAdapter("players.bin");
+     this.matchesAdapter = new MatchesAdapter("matches.bin");
+     this.matchesList = matchesAdapter.loadAllMatches();
+     this.playerList = playerAdapter.loadAllPlayers();
+  }
+  public void addPlayer(String name,int number, char position)
+  {
+	 playerList.addPlayer(new Player(name,number,position));
+	 
+	 playerAdapter.savePlayers(playerList);
   }
   
-  public void addPlayer()
+  public void removePlayer(Player nigga)
   {
-	 players
+	  playerList.removePlayer(nigga);
   }
   
-  public void removePlayer(Player player)
-  {
-	  playerList.removePlayer(player);
-  }
   
-  public void addPlayer(String name,int number, char Position)
-  {
-	 playerList.addPlayer(new Player(name,number,Position));
-  }
   
   public MatchesList getMatchList()
   {
