@@ -97,12 +97,12 @@ public class Match
 
    public PlayerList getPlayerList()
    {
-      return list;
+      return team;
    }
 
-   public void setPlayerList(PlayerList list)
+   public void setPlayerList(PlayerList team)
    {
-      this.list = list;
+      this.team = team;
    }
 }
 
