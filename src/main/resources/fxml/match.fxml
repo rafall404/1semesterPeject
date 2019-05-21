@@ -52,7 +52,7 @@
             <DatePicker GridPane.columnIndex="1" />
             <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField prefHeight="25.0" prefWidth="279.0" promptText="Support me at fiverr.com/Cryoza - I have small penis" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField prefHeight="25.0" prefWidth="279.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Time" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets top="10.0" />
