@@ -3,12 +3,20 @@
  */
 package semesterProject;
 
-public class App {
-    public String getGreeting() {
-        return "Hello world.";
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
+public class App extends Application {
+    public static void main(String[] args) {
+        launch(args);
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setScene(new Scene(new HBox(new Label("hello."))));
+        primaryStage.show();
     }
 }
