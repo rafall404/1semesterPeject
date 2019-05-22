@@ -1,7 +1,11 @@
 package semesterProject;
 
 
-
+/**
+ * A class containing a list of player objects
+ * @ author Simon Emmanuel
+ * @ version 1.0
+ */
 public class ProgramMediator
 {
   private MatchesList matchesList;
@@ -9,6 +13,9 @@ public class ProgramMediator
   private PlayersAdapter playerAdapter;
   private MatchesAdapter matchesAdapter;
   
+  /**
+   * No argument constructor initializing the instance variables
+   */
   public ProgramMediator()
   { 
      this.playerAdapter = new PlayersAdapter("players.bin");
@@ -16,6 +23,13 @@ public class ProgramMediator
      this.matchesList = matchesAdapter.loadAllMatches();
      this.playerList = playerAdapter.loadAllPlayers();
   }
+  
+  /**
+   * Adds a player to the Player list 
+   * @param name the name to add to the new player object
+   * @param number the number to add to the new player object
+   * @param position the position to add to the new player object
+   */
   public void addPlayer(String name,int number, char position)
   {
 	 playerList.addPlayer(new Player(name,number,position));
@@ -23,26 +37,54 @@ public class ProgramMediator
 	 playerAdapter.savePlayers(playerList);
   }
   
-  public void removePlayer(Player nigga)
+  /**
+   * remove a player from the list
+   * @param player the player to remove from the list
+   */
+  public void removePlayer(Player player)
   {
-	  playerList.removePlayer(nigga);
+	  playerList.removePlayer(player);
+  }
+  
+/**
+ * @return all player objects in player list
+ */
+  public ArrayList<Player> getAllPlayers()
+  {
+     return playerList;
   }
   
   
-  
-  public MatchesList getMatchList()
+  /**
+   * Gets a player with String name from the List
+   * @param name the name in the list of the Player Object
+   * @return the player with name if one exists, else return null
+   */
+  public Player getPlayerByName(String name)
   {
-	  return matchesList;
+     for (int i = 0; i < playerList.size(); i++)
+     {
+        if (player.get(i).getName().equals(name))
+           return playerList.get(i);
+     }
+     
+     return null;
   }
   
-  public void removeMatch(Match match)
+  /**
+   * Gets  player objects by char position from the List
+   * @param position the position in the list of the Player Object
+   * @return the players at position if one exists, else return null
+   */
+  public ArrayList<Player> getPlayersByPosition(char position)
   {
-	matchesList.addMatch(match); 
-  }
+     PlayerList temp = new PlayerList();
+     for (int i = 0; i < playerList.size(); i++)
+     {
+        if (playerList.get(i).getPosition() == position)
+           temp.add(playerList.get(i));
+     }
+     return temp;
   
-  public void addMatch(String type,MyDate date,String place,String opponent)
-  {
-	 matchesList.addMatch(new Match(type,date,place,opponent));
-  }
   
 }

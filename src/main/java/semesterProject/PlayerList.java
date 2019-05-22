@@ -2,32 +2,53 @@ package semesterProject;
 
 import java.util.ArrayList;
 
+/**
+ * A class containing a list of player objects
+ * @ author Simon Emmanuel
+ * @ version 1.0
+ */
 public class PlayerList
 {
 
    private ArrayList<Player> player;
-
+   
+   /**
+    * No argument constructor initializing the PlayerList
+    */
    public PlayerList()
    {
       this.player = new ArrayList<Player>();
 
    }
-
+   /**
+    * Adds a player to the list
+    * @param player the player to add to the list
+    */
    public void addPlayer(Player player)
    {
       this.player.add(player);
    }
-
+   
+   /**
+    * @return the number of the players in the playerList
+    */
    public int getNumberOfPlayers()
    {
       return player.size();
    }
-
+   
+   /**
+    * @return List of all player objects from playerList
+    */
    public ArrayList<Player> getAllPlayers()
    {
       return player;
    }
-
+   
+   /**
+    * @param temp the temp is an ArrayList object
+    * @return if player at i is not injured or suspended, return player list
+    */
    public ArrayList<Player> getAllAvailablePlayers()
    {
       ArrayList<Player> temp = new ArrayList<Player>();
@@ -39,12 +60,22 @@ public class PlayerList
       }
       return temp;
    }
-
+   
+   /**
+    * Gets a player from position index from the List
+    * @param index the position in the list of the Player Object
+    * @return the player at index if one exists, else return null
+    */
    public Player getPlayer(int index)
    {
       return player.get(index);
    }
-
+   
+   /**
+    * Gets a player from position index from the List by name
+    * @param name the name in the list of the Player Object
+    * @return the player with name if one exists, else return null
+    */
    public Player getPlayerByName(String name)
    {
       for (int i = 0; i < player.size(); i++)
@@ -55,9 +86,15 @@ public class PlayerList
       
       return null;
    }
-
+   
+   /**
+    * Gets  player objects by char position from the List
+    * @param position the position in the list of the Player Object
+    * @return the players at position if one exists, else return null
+    */
    public ArrayList<Player> getPlayersByPosition(char position)
    {
+	   
       ArrayList<Player> temp = new ArrayList<Player>();
       for (int i = 0; i < player.size(); i++)
       {
@@ -66,7 +103,12 @@ public class PlayerList
       }
       return temp;
    }
-
+   
+   /**
+    * Gets a player with int number from the List
+    * @param number the number in the list of the Player Object
+    * @return the player with number if one exists, else return null
+    */
    public Player getPlayerbyNumber(int number)
    {
       for (int i = 0; i < player.size(); i++)
@@ -77,12 +119,19 @@ public class PlayerList
       }
       return null;
    }
-
+   
+   /**
+    * remove a player from the list
+    * @param player the player to remove from the list
+    */
    public void removePlayer(Player player)
    {
       this.player.remove(player);
    }
 
+   /**
+    * no param method returning String object
+    */
    public String toString()
    {
       return "The players are:" + "/n" + player;

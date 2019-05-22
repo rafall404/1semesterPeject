@@ -3,16 +3,27 @@ package semesterProject;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
+/**
+ * A class of  PlayersAdapter object
+ * @author Matey Matev
+ * @version 1.0
+ */
 public class PlayersAdapter {
 	private MyFileIO fileIo;
 	private String fileName;
 
-
+/**
+ * the fileIO will be initialized
+ * @param fileName the fileName of the matchesAdapter will be set
+ */
 public PlayersAdapter(String fileName) {
 	this.fileIo= new MyFileIO();
 	this.fileName=fileName;
 }
 
+/**
+ * @return returns PlayerList data to the program
+ */
 public PlayerList loadAllPlayers() {
 	PlayerList players = null;
 	
@@ -28,7 +39,10 @@ public PlayerList loadAllPlayers() {
 	return players;
 }
 
-
+/**
+ * Writes the players param to the file object of fileName 
+ * @param players the players to save in the fileName object
+ */
 public void savePlayers(PlayerList players) {
 	try
 	{

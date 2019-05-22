@@ -2,12 +2,22 @@ package semesterProject;
 
 import java.util.GregorianCalendar;
 
+/**
+ * A class of  Match object
+ * @author Aleksandrs Fjodorovs, Rafal Pierscieniak, Simon Emanuel, Matey Matev
+ * @version 1.0
+ */
 public class MyDate
 {
    private int day;
    private int month;
    private int year;
-
+   
+   /**
+    * @param day the day of myDate will be set
+    * @param month the month of myDate will be set
+    * @param year the year of myDate will be set
+    */
    public MyDate(int d, int m, int y)
    {
       this.day = d;
@@ -15,48 +25,81 @@ public class MyDate
       this.year = y;
    }
 
+   /**
+    * No argument constructor initializing the PlayerList
+    */
    public MyDate()
    {
       this.day = 0;
       this.month = 0;
       this.year = 0;
-   }
+   }-
 
+   /**
+    * no param method returning String object
+    */
    public String toString()
    {
       return " " + day + "/" + month + "/" + year;
    }
 
+   /**
+    * Gets a year object from the class
+    * @return the year of the myDate
+    */
    public int getYear()
    {
       return this.year;
    }
 
+   /**
+    * Gets a month object from the class
+    * @return the month of the myDate
+    */
    public int getMonth()
    {
       return this.month;
    }
 
+   /**
+    * Gets a day object from the class
+    * @return the day of the myDate
+    */
    public int getDay()
    {
       return this.day;
    }
 
+   /**
+    * replaces the day object with d
+    * @param d the day of the myDate will be replaced
+    */
    public void setDay(int d)
    {
       day = d;
    }
 
+   /**
+    * replaces the month object with month
+    * @param m the month of the myDate will be replaced
+    */
    public void setMonth(int m)
    {
       month = m;
    }
 
+   /**
+    * replaces the year object with d
+    * @param y the year of the myDate will be replaced
+    */
    public void setYear(int y)
    {
       year = y;
    }
 
+   /**
+    * @return true if year of myDate is  a leap year 
+    */
    public boolean isLeapYear()
    {
       if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
@@ -64,7 +107,13 @@ public class MyDate
       else
          return false;
    }
-
+ /**
+  * @return 31 if month has 31 days 
+  * @return 30 if month has 30 days
+  * @return 29 if month is 2 and is leap year
+  * @return 28 if month is 2 and not a leap year 
+  * @return -1 if month is unknown
+  */
    public int daysInMonth()
    {
       if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8
@@ -90,36 +139,16 @@ public class MyDate
 
    }
 
-   public String getAstroSign()
-   {
-      if (month == 3 && day >= 21 || month == 4 && day <= 19)
-         return "Aries";
-      else if (month == 4 && day >= 20 || month == 5 && day <= 20)
-         return "Taurus";
-      else if (month == 5 && day >= 21 || month == 6 && day <= 20)
-         return "Gemini";
-      else if (month == 6 && day >= 21 || month == 7 && day <= 22)
-         return "Cancer";
-      else if (month == 7 && day >= 23 || month == 8 && day <= 22)
-         return "Leo";
-      else if (month == 8 && day >= 23 || month == 9 && day <= 22)
-         return "Virgo";
-      else if (month == 9 && day >= 23 || month == 10 && day <= 22)
-         return "Libra";
-      else if (month == 10 && day >= 23 || month == 11 && day <= 21)
-         return "Scorpio";
-      else if (month == 11 && day >= 22 || month == 12 && day <= 21)
-         return "Sagittarius";
-      else if (month == 12 && day >= 22 || month == 1 && day <= 19)
-         return "Capricorn";
-      else if (month == 1 && day >= 20 || month == 2 && day <= 18)
-         return "Aquarius";
-      else if (month == 2 && day >= 19 || month == 3 && day <= 20)
-         return "Pisces";
-      else
-         return "Whore";
-   }
-
+   /**
+    * Gets the name of the day of the week 
+    * @return Saturday if h == 0
+    * @return Sunday if h == 1
+    * @return Monday if h == 2
+    * return Tuesday if h == 3
+    * @return Wednesday if h == 4
+    * @return Thursday if h == 5
+    * @return Friday if h == 6, else return error
+    */
    public String dayOfWeek()
    {
       int q = day;
@@ -160,105 +189,12 @@ public class MyDate
 
    }
 
-   public String getMonthName()
-   {
-      switch (month)
-      {
-         case 1:
-            return "January";
-         case 2:
-            return "February";
-         case 3:
-            return "March";
-         case 4:
-            return "April";
-         case 5:
-            return "May";
-         case 6:
-            return "June";
-         case 7:
-            return "July";
-         case 8:
-            return "August";
-         case 9:
-            return "September";
-         case 10:
-            return "October";
-         case 11:
-            return "November";
-         case 12:
-            return "December";
-         default:
-            return null;
-      }
-   }
+   
 
-   public void nextDay()
-   {
-      this.day++;
-
-      if (day > 31 && (month == 1 || month == 3 || month == 5 || month == 7
-            || month == 8 || month == 10)) // 1,3,5,7,8,10
-      {
-         day = 1;
-         month++;
-      }
-      else if (day > 30
-            && (month == 4 || month == 6 || month == 9 || month == 11)) // 4,6,9,11
-      {
-         day = 1;
-         month++;
-      }
-      else if ((day > 28 && month == 2 && !isLeapYear())
-            || (day > 29 && month == 2 && isLeapYear()))
-      {
-         day = 1;
-         month++;
-      }
-      else if (day > 31 && month == 12)
-      {
-         day = 1;
-         month = 1;
-         year++;
-      }
-
-   }
-
-   public String displayDate()
-   {
-      return day + "/" + month + "/" + year;
-   }
-
-   public boolean equals(Object obj)
-   {
-      if (!(obj instanceof MyDate))
-      {
-         return false;
-      }
-      MyDate other = (MyDate) obj;
-      return day == other.day && month == other.month && year == other.year;
-   }
-
-   public MyDate copy()
-   {
-      return new MyDate(day, month, year);
-   }
-
-   public MyDate(MyDate object)
-   {
-      day = object.day;
-      month = object.month;
-      year = object.year;
-   }
-
-   public void nextDays(int days)
-   {
-      for (int i = 0; i < days; i++)
-      {
-         nextDay();
-      }
-   }
-
+  /**
+   * @param date2 the date Object of Mydate to compare with
+   *  @return true if date of match is before date given as param, else return false
+   */
    public boolean isBefore(MyDate date2)
    {
       if (year < date2.year)
@@ -278,7 +214,10 @@ public class MyDate
          return false;
       }
    }
-
+   
+   /**
+    *@return d of new object myDate with static gregorian calendar objects
+    */
    public static MyDate today()
    {
       GregorianCalendar currentDate = new GregorianCalendar();
@@ -288,5 +227,27 @@ public class MyDate
       MyDate d = new MyDate(currentDay, currentMonth, currentYear);
       return d;
    }
+   /**
+    * @ param obj return false if not instance of myDate class
+    * @ param obj is equals to other object instance of MyDate
+    * @ return true if this class variables is equal to other class variables
+    */
+   public boolean equals(Object obj)
+   {
+	 if(!(obj instanceof Object))
+		 return false;
+	 
+	 MyDate other = (MyDate) obj;
+	 
+	 return (day==other.day && month==other.month && year==other.year)
+   }
 
+   /**
+    * Gets new obect Mydate equal to the field of the class 
+    * @return a new myDate Object
+    */
+   public MyDate copy()
+   {
+	   return new MyDate(this.day,this.month,this.year)
+   }
 }
