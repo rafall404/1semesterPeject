@@ -1,11 +1,13 @@
-package semesterProject;
+package application;
+
+import java.io.Serializable;
 
 /**
  * A class of  Player object
  * @author Rafal Pierscienak
  * @version 1.0
  */
-public class Player
+public class Player implements Serializable
 {
    private String name;
    private int number;

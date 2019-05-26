@@ -1,10 +1,10 @@
-package semesterProject;
+package application;
 
 import java.util.GregorianCalendar;
 
 /**
  * A class of  Match object
- * @author Aleksandrs Fjodorovs, Rafal Pierscieniak, Simon Emanuel, Matey Matev
+ * @author Aleksandrs Fjodorovs,
  * @version 1.0
  */
 public class MyDate

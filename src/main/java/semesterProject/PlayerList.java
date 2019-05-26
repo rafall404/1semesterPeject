@@ -1,5 +1,6 @@
-package semesterProject;
+package application;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * @ author Simon Emmanuel
  * @ version 1.0
  */
-public class PlayerList
+public class PlayerList implements Serializable
 {
 
    private ArrayList<Player> player;

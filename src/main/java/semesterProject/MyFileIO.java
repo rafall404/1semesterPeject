@@ -1,4 +1,4 @@
-package semesterProject;
+package application;
 
 import java.io.EOFException;
 import java.io.FileInputStream;
@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /**
@@ -23,6 +25,11 @@ public class MyFileIO
      */
     public void writeToFile(String fileName, Object obj) throws FileNotFoundException, IOException
     {
+    	// Create a file if it doesn't exists
+    	if(!Files.exists(Paths.get(fileName)))
+    		Files.createFile(Paths.get(fileName));
+    	
+    	
         ObjectOutputStream writeToFile = null;
 
         try
@@ -42,7 +49,7 @@ public class MyFileIO
                 }
                 catch (IOException e)
                 {
-                    System.out.println("IO Error closing file " + fileName);
+					System.out.println("IO Error closing file " + fileName);
                 }
             }
         }
