@@ -1,4 +1,4 @@
-package semesterProject;
+package application;
 
 import java.io.EOFException;
 import java.io.FileInputStream;
@@ -7,13 +7,29 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
+/**
+ * A class of  MyFileIO object
+ * @author Matey Matev
+ * @version 1.0
+ */
 public class MyFileIO
 {
-    // Writes the given object to a file with the given file name
+    /** 
+     * Writes the given object to a file with the given file name
+     * @param fileName the filename of the fileOutputStream
+     * @param obj the Object to be written to a file 
+     */
     public void writeToFile(String fileName, Object obj) throws FileNotFoundException, IOException
     {
+    	// Create a file if it doesn't exists
+    	if(!Files.exists(Paths.get(fileName)))
+    		Files.createFile(Paths.get(fileName));
+    	
+    	
         ObjectOutputStream writeToFile = null;
 
         try
@@ -33,13 +49,16 @@ public class MyFileIO
                 }
                 catch (IOException e)
                 {
-                    System.out.println("IO Error closing file " + fileName);
+					System.out.println("IO Error closing file " + fileName);
                 }
             }
         }
     }
 
-    // Writes the objects in the given array to a file with the given file name
+    /** Writes the objects in the given array to a file with the given file name
+     *  @param fileName the filename of the fileOutputStream
+     *  @param obj the object array to be written to the file
+     */
     public void writeToFile(String fileName, Object[] objs) throws FileNotFoundException, IOException
     {
         ObjectOutputStream writeToFile = null;
@@ -70,8 +89,11 @@ public class MyFileIO
         }
     }
 
-    // Reads the first object from the file with the given file name and returns it.
-    // Whoever calls the method will need to cast it from type Object to its real type
+    /**
+     *  Reads the first object from the file with the given file name and returns it.
+      Whoever calls the method will need to cast it from type Object to its real type
+     * @param fileName the filename of the fileOutputStream
+     */
     public Object readObjectFromFile(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException
     {
         Object obj = null;
@@ -107,8 +129,11 @@ public class MyFileIO
         return obj;
     }
 
-    // Reads all objects from the file with the given file name and returns it as an Object[].
-    // Whoever calls the method will need to cast the Objects to their real type
+    /** 
+     *Reads all objects from the file with the given file name and returns it as an Object[].
+     Whoever calls the method will need to cast the Objects to their real type
+     * @param fileName the filename of the fileOutputStream
+     */
     public Object[] readArrayFromFile(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException
     {
         ArrayList<Object> objs = new ArrayList<Object>();
