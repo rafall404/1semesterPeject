@@ -4,4 +4,16 @@
 # Ignore Gradle build output directory
 build
 
+# IntelliJ metafiles
 .idea
+
+# Eclipse files
+.classpath
+.project
+.settings
+bin
+
+# VIM files
+tags
+Session.vim
+.gradletasknamecache
