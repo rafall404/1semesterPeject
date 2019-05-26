@@ -33,7 +33,7 @@ public class MyDate
       this.day = 0;
       this.month = 0;
       this.year = 0;
-   }-
+   }
 
    /**
     * no param method returning String object
@@ -239,7 +239,7 @@ public class MyDate
 	 
 	 MyDate other = (MyDate) obj;
 	 
-	 return (day==other.day && month==other.month && year==other.year)
+	 return (day==other.day && month==other.month && year==other.year);
    }
 
    /**
@@ -248,6 +248,6 @@ public class MyDate
     */
    public MyDate copy()
    {
-	   return new MyDate(this.day,this.month,this.year)
+	   return new MyDate(this.day,this.month,this.year);
    }
 }
