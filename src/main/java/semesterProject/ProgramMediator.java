@@ -45,6 +45,8 @@ public class ProgramMediator
 	public void removePlayer(Player player)
 	{
 		playerList.removePlayer(player);
+		
+		playerAdapter.savePlayers(playerList);
 	}
 
 	/**
@@ -85,4 +87,11 @@ public class ProgramMediator
 		}
 		return temp;
 	} 
+	
+	public void addPlayer(Player player) {		
+		playerList.addPlayer(player);
+
+		playerAdapter.savePlayers(playerList);
+	}
+	
 }
