@@ -1,4 +1,4 @@
-package application;
+package semesterProject;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
