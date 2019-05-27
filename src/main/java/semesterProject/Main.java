@@ -64,13 +64,8 @@ public class Main extends Application {
 	private ProgramMediator mediator;
 
 	public void start(Stage primaryStage) throws IOException {
-<<<<<<< HEAD
 		primaryStage.setTitle("VIA Club");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/main.fxml"));
-=======
-		primaryStage.setTitle("CALCULATOR");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
->>>>>>> 708780acc5184c125e52b2169eea1bf5fc11b6af
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
 		loader.setController(this);
 		Scene scene = new Scene(loader.load());
 
@@ -106,7 +101,7 @@ public class Main extends Application {
 	}
 
 	public void handleClickMe(ActionEvent e) throws IOException {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddMatch.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/matchSetting.fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
 		Stage stage = new Stage();
 		stage.setTitle("Add Match");
@@ -117,7 +112,7 @@ public class Main extends Application {
 
 	public void handleClickMe1(ActionEvent e) throws IOException {
 
-		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("addPlayer.fxml"));
+		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/fxml/playerSetting.fxml"));
 		fxmlLoader1.setController(this);
 		Parent root = (Parent) fxmlLoader1.load();
 		System.out.println("CREATE STAGE: " + addPlayerStage);

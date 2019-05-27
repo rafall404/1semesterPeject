@@ -2,6 +2,7 @@ package semesterProject;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 
 /**
  * A class of  MatchesAdapter object
