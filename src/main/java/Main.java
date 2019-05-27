@@ -65,7 +65,7 @@ public class Main extends Application {
 
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setTitle("CALCULATOR");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Practice.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
 		loader.setController(this);
 		Scene scene = new Scene(loader.load());
 
