@@ -64,8 +64,13 @@ public class Main extends Application {
 	private ProgramMediator mediator;
 
 	public void start(Stage primaryStage) throws IOException {
+<<<<<<< HEAD
 		primaryStage.setTitle("VIA Club");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/main.fxml"));
+=======
+		primaryStage.setTitle("CALCULATOR");
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+>>>>>>> 708780acc5184c125e52b2169eea1bf5fc11b6af
 		loader.setController(this);
 		Scene scene = new Scene(loader.load());
 
