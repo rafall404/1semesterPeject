@@ -1,4 +1,4 @@
-package application;
+package semesterProject;
 
 import java.io.EOFException;
 import java.io.FileInputStream;
@@ -61,6 +61,10 @@ public class MyFileIO
      */
     public void writeToFile(String fileName, Object[] objs) throws FileNotFoundException, IOException
     {
+       // Create a file if it doesn't exists
+       if(!Files.exists(Paths.get(fileName)))
+          Files.createFile(Paths.get(fileName));
+       
         ObjectOutputStream writeToFile = null;
 
         try

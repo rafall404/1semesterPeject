@@ -1,4 +1,4 @@
-package application;
+package semesterProject;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
@@ -30,7 +30,7 @@ public class PlayersAdapter {
 		try {
 			return (PlayerList) fileIo.readObjectFromFile(fileName);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+		   // 
 		} catch (IOException e) {
 			System.out.println("IO Error reading file");
 		} catch (ClassNotFoundException e) {

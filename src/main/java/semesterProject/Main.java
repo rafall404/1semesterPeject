@@ -1,4 +1,5 @@
-package application;
+
+package semesterProject;
 
 import java.io.IOException;
 import java.util.List;
@@ -64,7 +65,7 @@ public class Main extends Application {
 
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setTitle("CALCULATOR");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("Practice.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Practice.fxml"));
 		loader.setController(this);
 		Scene scene = new Scene(loader.load());
 
