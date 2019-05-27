@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
  * @author Matey Matev
  * @version 1.0
  */
-public class MatchesAdapter {
+public class MatchesAdapter implements Serializable {
    private MyFileIO fileIo;
    private String fileName;
 

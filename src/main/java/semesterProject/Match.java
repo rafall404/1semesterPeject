@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Aleksandrs Fjodorovs
  * @version 1.0
  */
-public class Match
+public class Match implements Serializable
 {
    private String type;
    private static final String[] TYEPS = { "" };

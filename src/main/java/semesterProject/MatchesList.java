@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Matey Matev
  * @version 1.0
  */
-public class MatchesList
+public class MatchesList implements Serializable
 {
    private ArrayList<Match> matches;
    

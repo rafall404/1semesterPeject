@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author Matey Matev
  * @version 1.0
  */
-public class MyFileIO
+public class MyFileIO implements Serializable
 {
     /** 
      * Writes the given object to a file with the given file name
