@@ -1,5 +1,6 @@
 package semesterProject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
