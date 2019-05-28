@@ -1,10 +1,9 @@
 
 package semesterProject;
 
-import semesterProject.MatchSettings;
-import semesterProject.PlayerSettings;
 import java.io.IOException;
 import java.util.List;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,22 +23,39 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	//Buttons for main.java;
-	@FXML private Button AddMatch;
-	@FXML private Button AddPlayer;
-	//Fields for playerSettings;
-	@FXML private TextField name;
-	@FXML private TextField number;
-	@FXML private ComboBox<String> position;
-	@FXML private CheckBox isInjured;
-	@FXML private CheckBox isSuspended;
-     //ViewTable in the main.java;
-	@FXML private TableView<Player> players;
-	@FXML private TableColumn<Player, String> nameCol;
-	@FXML private TableColumn<Player, Integer> numberCol;
-	@FXML private TableColumn<Player, Character> positionCol;
-	@FXML private TableColumn<Player, Boolean> injuredCol;
-	@FXML private TableColumn<Player, Boolean> suspendedCol;
+	
+	@FXML
+	private TextField text;
+	@FXML
+	private Button AddMatch;
+
+	@FXML
+	private Button AddPlayer;
+	@FXML
+	private TextField name;
+	@FXML
+	private TextField number;
+
+	@FXML
+	private ComboBox<String> position;
+	@FXML
+	private CheckBox isInjured;
+	@FXML
+	private CheckBox isSuspended;
+
+	@FXML
+	private TableView<Player> players;
+
+	@FXML
+	private TableColumn<Player, String> nameCol;
+	@FXML
+	private TableColumn<Player, Integer> numberCol;
+	@FXML
+	private TableColumn<Player, Character> positionCol;
+	@FXML
+	private TableColumn<Player, Boolean> injuredCol;
+	@FXML
+	private TableColumn<Player, Boolean> suspendedCol;
 
 	private Stage addPlayerStage;
 	private Stage addMatchStage;
@@ -47,9 +63,6 @@ public class Main extends Application {
 	private  PlayerSettings playerPage;
 
 	private ProgramMediator mediator;
-
-
-
 
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setTitle("VIA Club");
@@ -67,15 +80,15 @@ public class Main extends Application {
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
-
+		
 		players.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 	}
 
 	public Main() {
 
 		this.mediator = new ProgramMediator();
-		addPlayerStage = new Stage();
-		addMatchStage = new Stage();
+//		addPlayerStage = new Stage();
+//		addMatchStage = new Stage();
 		this.matchpage= new MatchSettings(this.mediator);
 	}
 
@@ -91,22 +104,26 @@ public class Main extends Application {
 		}
 	}
 
-	public void handleClickMe(ActionEvent e) throws IOException {
-		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/fxml/MatchSettings.fxml"));
-		fxmlLoader1.setController(this);
+	public void openMatchEdit(ActionEvent e) throws IOException {
+		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/fxml/matchSettings.fxml"));
+		fxmlLoader1.setController(new MatchSettings(mediator));
 		Parent root = (Parent) fxmlLoader1.load();
-		System.out.println("CREATE STAGE: " + addPlayerStage);
-		addPlayerStage.setTitle("Add Player");
-		addPlayerStage.setScene(new Scene(root));
 
-		addPlayerStage.show();
+		addMatchStage = new Stage();
+		System.out.println("CREATE STAGE: " + addPlayerStage);
+		addMatchStage.setTitle("Add Match");
+		addMatchStage.setScene(new Scene(root));
+
+		addMatchStage.show();
 	}
 
-	public void handleClickMe1(ActionEvent e) throws IOException {
+	public void openPlayerEdit(ActionEvent e) throws IOException {
 
 		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/fxml/playerSettings.fxml"));
-		fxmlLoader1.setController(this);
+		fxmlLoader1.setController(new PlayerSettings(mediator));
 		Parent root = (Parent) fxmlLoader1.load();
+
+		addPlayerStage = new Stage();
 		System.out.println("CREATE STAGE: " + addPlayerStage);
 		addPlayerStage.setTitle("Add Player");
 		addPlayerStage.setScene(new Scene(root));
@@ -136,7 +153,7 @@ public class Main extends Application {
 
 			Player player = new Player(playerName, (Integer.parseInt(playerNumber)), PlayerPosition.charAt(0),
 					isPlayerInjured, isPlayerSuspended);
-
+			
 			for(int i=0; i<players.getItems().size(); i++)
 			{
 				if(players.getItems().get(i).equals(player))
@@ -146,9 +163,9 @@ public class Main extends Application {
 				alert1.setContentText("Fields have already been taken!");
 				addPlayerStage.close();
 			}
-
+				
 			}
-
+			
 
 			mediator.addPlayer(player);
 			addPlayerStage.close();
@@ -169,15 +186,18 @@ public class Main extends Application {
 	}
 
 	@FXML
-	private void removeButtonAction(ActionEvent e) {
-		List<Player> p = players.getSelectionModel().getSelectedItems();
-		for (int i = 0; i < p.size(); i++) {
-			mediator.removePlayer(p.get(i));
-
-		}
-		updatePlayers();
-		players.refresh();
-
-
-	}}
-
+	private void removeButtonAction(ActionEvent e)
+	{
+      List<Player> p = players.getSelectionModel().getSelectedItems();
+      for(int i= 0; i<p.size(); i++) {
+    	  mediator.removePlayer(p.get(i));
+    	  
+      }
+      updatePlayers();
+      players.refresh();
+      
+      
+      
+     
+	}
+}

@@ -39,15 +39,14 @@ public class MatchSettings{
 
 
 
-
     private ProgramMediator mediator;
-    private Main mainController;
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 
-
-    public  void init(ProgramMediator mediator, Main main){
+    public MatchSettings(ProgramMediator mediator){
         this.mediator=mediator;
-        mainController = main;
     }
 
     public void AddButtonAction (ActionEvent e){
@@ -69,7 +68,8 @@ public class MatchSettings{
        }
     }
 
-    public void saveButtonAction(ActionEvent e)
+    @FXML
+    private void saveButtonAction(ActionEvent e)
     {
         Alert alert= new Alert(AlertType.WARNING);
         if(date.getPromptText().isEmpty() || type.getPromptText().equals("Choose match type") || place.getPromptText().equals("Choose match place") ||
