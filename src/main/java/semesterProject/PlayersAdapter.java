@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 /**
  * A class of PlayersAdapter object
  * 
- * @author Matey Matev
+ * @author Rafał Pierścieniak
  * @version 1.0
  */
 public class PlayersAdapter {
