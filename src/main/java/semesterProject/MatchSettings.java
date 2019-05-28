@@ -38,17 +38,15 @@ public class MatchSettings{
     @FXML private TableView<Player> teamView;
 
 
-    private PlayerSettings players;
-    private Main main;
+
     private ProgramMediator mediator;
 
     public static void main(String[] args) {
         launch(args);
     }
 
-    public MatchSettings(PlayerSettings players, Main main){
-        this.players=players;
-        this.main=main;
+    public MatchSettings(ProgramMediator mediator){
+        this.mediator=mediator;
     }
 
     public void AddButtonAction (ActionEvent e){
