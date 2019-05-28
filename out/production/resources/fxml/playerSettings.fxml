@@ -52,14 +52,14 @@
             <ComboBox fx:id="position" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
              <items>
               <FXCollections fx:factory="observableArrayList">
-                <String fx:value="D" />
-                 <String fx:value="M" />
                 <String fx:value="F" />
-                <String fx:value="Gk" />
+                 <String fx:value="M" />
+                <String fx:value="D" />
+                <String fx:value="G" />
               </FXCollections>
             </items>
             <value>
-              <String fx:value="D" />
+              <String fx:value="Pick Position" />
           </value>
             </ComboBox>
             <Label text="Injured" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />

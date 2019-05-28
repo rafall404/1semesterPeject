@@ -25,7 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	ObservableList<String> positionList = FXCollections.observableArrayList("D", "M", "F", "Gk");
+	
 	@FXML
 	private TextField text;
 	@FXML
@@ -112,7 +112,7 @@ public class Main extends Application {
 
 	public void handleClickMe1(ActionEvent e) throws IOException {
 
-		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/fxml/playerSetting.fxml"));
+		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/fxml/playerSettings.fxml"));
 		fxmlLoader1.setController(this);
 		Parent root = (Parent) fxmlLoader1.load();
 		System.out.println("CREATE STAGE: " + addPlayerStage);
