@@ -25,20 +25,13 @@ import javafx.stage.Stage;
 
 public class PlayerSettings {
 
-    @FXML
-    private TextField name;
-    @FXML
-    private TextField number;
-    @FXML
-    private ComboBox<String> position;
-    @FXML
-    private CheckBox isInjured;
-    @FXML
-    private CheckBox isSuspended;
-    @FXML
-    private Button saveButton;
-    @FXML
-    private Button close;
+    @FXML private TextField name;
+    @FXML private TextField number;
+    @FXML private ComboBox<String> position;
+    @FXML private CheckBox isInjured;
+    @FXML private CheckBox isSuspended;
+    @FXML private Button saveButton;
+    @FXML private Button close;
 
     private ProgramMediator mediator;
 
