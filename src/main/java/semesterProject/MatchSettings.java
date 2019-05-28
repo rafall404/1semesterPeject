@@ -68,7 +68,8 @@ public class MatchSettings{
        }
     }
 
-    public void saveButtonAction(ActionEvent e)
+    @FXML
+    private void saveButtonAction(ActionEvent e)
     {
         Alert alert= new Alert(AlertType.WARNING);
         if(date.getPromptText().isEmpty() || type.getPromptText().equals("Choose match type") || place.getPromptText().equals("Choose match place") ||
