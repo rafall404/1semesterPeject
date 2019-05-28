@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * A class of  MatchesAdapter object
- * @author Matey Matev
+ * @author Rafał Pierścieniak
  * @version 1.0
  */
 public class MatchesAdapter implements Serializable {

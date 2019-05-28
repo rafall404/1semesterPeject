@@ -57,6 +57,11 @@ public class ProgramMediator
 		return playerList;
 	}
 
+	public MatchesList getAllMatches()
+	{
+		return matchesList;
+	}
+
 
 	/**
 	 * Gets a player with String name from the List

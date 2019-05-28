@@ -33,15 +33,17 @@ public class Match implements Serializable
    }
    
    /**
-    * @param type the type of the match will be set
     * @param date the date of the match will be set
+    * @param  opponent the opponent of the match will be set
     * @param place the place of the match will be set
+    * @param  type the type of the match will be set
     */
-   public Match(String type, MyDate date, String place)
+   public Match( MyDate date,String opponent, String place,String type)
    {
-      this.type = type;
-      this.date = new MyDate();
+      this.date= date;
+      this.opponent=opponent;
       this.place = place;
+      this.type= type;
    }
    
    /**

@@ -1,5 +1,6 @@
 package semesterProject;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.util.List;
 import javafx.application.Application;
@@ -50,4 +51,9 @@ private ProgramMediator mediator;
     loader.setController(this);
     return loader.load();
  }
+=======
+public class PlayerSettings{
+
+
+>>>>>>> d1c8dfd2c6e9f49d59c88bc8cfa6e1e437b557a7
 }
