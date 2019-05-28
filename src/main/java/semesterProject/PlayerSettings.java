@@ -1,6 +1,6 @@
 package semesterProject;
 
-<<<<<<< HEAD
+
 import java.io.IOException;
 import java.util.List;
 import javafx.application.Application;
@@ -24,36 +24,31 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class PlayerSettings {
-   
-@FXML
-private TextField name;
-@FXML
-private TextField number;
-@FXML
-private ComboBox<String> position;
-@FXML
-private CheckBox isInjured;
-@FXML
-private CheckBox isSuspended;
-@FXML
-private Button saveButton;
-@FXML
-private Button close;
 
-private ProgramMediator mediator;
+    @FXML
+    private TextField name;
+    @FXML
+    private TextField number;
+    @FXML
+    private ComboBox<String> position;
+    @FXML
+    private CheckBox isInjured;
+    @FXML
+    private CheckBox isSuspended;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Button close;
 
- public PlayerSettings(ProgramMediator mediator)
- {
-    this.mediator = mediator;
- }
- public Parent load() throws IOException {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/playerSettings.fxml"));
-    loader.setController(this);
-    return loader.load();
- }
-=======
-public class PlayerSettings{
+    private ProgramMediator mediator;
 
+    public PlayerSettings(ProgramMediator mediator) {
+        this.mediator = mediator;
+    }
 
->>>>>>> d1c8dfd2c6e9f49d59c88bc8cfa6e1e437b557a7
+    public Parent load() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/playerSettings.fxml"));
+        loader.setController(this);
+        return loader.load();
+    }
 }

@@ -60,6 +60,7 @@ public class Main extends Application {
 	private TableColumn<Player, Boolean> suspendedCol;
 
 	private Stage addPlayerStage;
+	private Stage addMatchStage;
 
 	private ProgramMediator mediator;
 
@@ -86,6 +87,7 @@ public class Main extends Application {
 	public Main() {
 		this.mediator = new ProgramMediator();
 		addPlayerStage = new Stage();
+		addMatchStage = new Stage();
 	}
 
 	public static void main(String[] args) {
@@ -102,11 +104,11 @@ public class Main extends Application {
 
 	public void handleClickMe(ActionEvent e) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/matchSetting.fxml"));
+		fxmlLoader.setController(this);
 		Parent root1 = (Parent) fxmlLoader.load();
-		Stage stage = new Stage();
-		stage.setTitle("Add Match");
-		stage.setScene(new Scene(root1));
-		stage.show();
+		addMatchStage.setTitle("Add Match");
+		addMatchStage.setScene(new Scene(root1));
+		addMatchStage.show();
 
 	}
 
