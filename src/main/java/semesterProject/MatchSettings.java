@@ -39,14 +39,15 @@ public class MatchSettings{
 
 
 
+
     private ProgramMediator mediator;
+    private Main mainController;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-    public MatchSettings(ProgramMediator mediator){
+
+    public  void init(ProgramMediator mediator, Main main){
         this.mediator=mediator;
+        mainController = main;
     }
 
     public void AddButtonAction (ActionEvent e){
