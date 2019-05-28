@@ -44,4 +44,14 @@ public class PlayerSettings {
         loader.setController(this);
         return loader.load();
     }
+
+    @FXML void closeButtonAction(ActionEvent event) {
+
+    }
+
+    @FXML void saveButtonAction(ActionEvent event) {
+
+    }
+
 }
+
