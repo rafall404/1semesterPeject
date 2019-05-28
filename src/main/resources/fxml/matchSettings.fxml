@@ -66,8 +66,8 @@
 						<Insets />
 					</GridPane.margin>
 				</Label>
-				<DatePicker fx:id="date" onAction="#DatePicker" GridPane.columnIndex="1" />
-				<ComboBox fx:id="type" onAction="#typeComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+				<DatePicker fx:id="date" GridPane.columnIndex="1" />
+				<ComboBox fx:id="type" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
 					<items>
 						<FXCollections fx:factory="observableArrayList">
 							<String fx:value="Premier league" />
@@ -80,7 +80,7 @@
 						<String fx:value="Choose match type" />
 					</value>
 				</ComboBox>
-				<ComboBox fx:id="place" onAction="#placeComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+				<ComboBox fx:id="place" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
 					<items>
 						<FXCollections fx:factory="observableArrayList">
 							<String fx:value="home" />
@@ -145,14 +145,13 @@
                </font></Label>
 				<Button fx:id="Remove" mnemonicParsing="false" onAction="#removeButtonAction" text="Remove" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
 				<Button fx:id="add" mnemonicParsing="false" onAction="#AddButtonAction" text="Add" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
-				<Button fx:id="cancel" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancel" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+				<Button fx:id="cancel" mnemonicParsing="false" text="Cancel" GridPane.halignment="LEFT" GridPane.rowIndex="3">
 					<GridPane.margin>
 						<Insets />
 					</GridPane.margin>
 				</Button>
 				<Button fx:id="save" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-					<GridPane.margin>
-						<Insets />
+					<GridPane.margin>						<Insets />
 					</GridPane.margin>
 				</Button>
 			</children>

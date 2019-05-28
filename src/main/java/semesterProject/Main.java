@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.List;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,6 +59,8 @@ public class Main extends Application {
 
 	private Stage addPlayerStage;
 	private Stage addMatchStage;
+	private  MatchSettings matchpage;
+	private  PlayerSettings playerPage;
 
 	private ProgramMediator mediator;
 
@@ -85,9 +85,11 @@ public class Main extends Application {
 	}
 
 	public Main() {
+
 		this.mediator = new ProgramMediator();
 		addPlayerStage = new Stage();
 		addMatchStage = new Stage();
+		this.matchpage= new MatchSettings(this.mediator);
 	}
 
 	public static void main(String[] args) {
@@ -103,13 +105,14 @@ public class Main extends Application {
 	}
 
 	public void handleClickMe(ActionEvent e) throws IOException {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/matchSetting.fxml"));
-		fxmlLoader.setController(this);
-		Parent root1 = (Parent) fxmlLoader.load();
-		addMatchStage.setTitle("Add Match");
-		addMatchStage.setScene(new Scene(root1));
-		addMatchStage.show();
+		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/fxml/MatchSettings.fxml"));
+		fxmlLoader1.setController(this);
+		Parent root = (Parent) fxmlLoader1.load();
+		System.out.println("CREATE STAGE: " + addPlayerStage);
+		addPlayerStage.setTitle("Add Player");
+		addPlayerStage.setScene(new Scene(root));
 
+		addPlayerStage.show();
 	}
 
 	public void handleClickMe1(ActionEvent e) throws IOException {
@@ -173,6 +176,8 @@ public class Main extends Application {
 			players.refresh();
 
 		}
+
+
 
 	}
 
