@@ -42,22 +42,25 @@ public class PlayerList implements Serializable
     * @return List of all player objects from playerList
     */
    public ArrayList<Player> getAllPlayers()
+
    {
+
       return player;
+
    }
    
    /**
     * @param temp the temp is an ArrayList object
     * @return if player at i is not injured or suspended, return player list
     */
-   public ArrayList<Player> getAllAvailablePlayers()
+   public PlayerList getAllAvailablePlayers()
    {
-      ArrayList<Player> temp = new ArrayList<Player>();
+      PlayerList temp = new PlayerList();
 
       for (int i = 0; i < player.size(); i++)
       {
          if (!player.get(i).isInjured() && !player.get(i).isSuspended())
-            temp.add(player.get(i));
+            temp.addPlayer(player.get(i));
       }
       return temp;
    }
@@ -93,14 +96,14 @@ public class PlayerList implements Serializable
     * @param position the position in the list of the Player Object
     * @return the players at position if one exists, else return null
     */
-   public ArrayList<Player> getPlayersByPosition(char position)
+   public PlayerList getPlayersByPosition(char position)
    {
 	   
-      ArrayList<Player> temp = new ArrayList<Player>();
+      PlayerList temp = new PlayerList();
       for (int i = 0; i < player.size(); i++)
       {
          if (player.get(i).getPosition() == position)
-            temp.add(player.get(i));
+            temp.addPlayer(player.get(i));
       }
       return temp;
    }

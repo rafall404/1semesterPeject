@@ -31,9 +31,9 @@ public class ProgramMediator
 	 * @param number the number to add to the new player object
 	 * @param position the position to add to the new player object
 	 */
-	public void addPlayer(String name,int number, char position)
+	public void addPlayer(int number, String name,char position)
 	{
-		playerList.addPlayer(new Player(name,number,position));
+		playerList.addPlayer(new Player(number,name,position));
 
 		playerAdapter.savePlayers(playerList);
 	}
@@ -70,13 +70,7 @@ public class ProgramMediator
 	 */
 	public Player getPlayerByName(String name)
 	{
-		for (int i = 0; i < playerList.getNumberOfPlayers(); i++)
-		{
-			if (playerList.getPlayer(i).getName().equals(name))
-				return playerList.getPlayer(i);
-		}
-
-		return null;
+		return playerList.getPlayerByName(name);
 	}
 
 	/**
@@ -85,18 +79,119 @@ public class ProgramMediator
 	 * @return the players at position if one exists, else return null
 	 */
 	public PlayerList getPlayersByPosition(char position) {
-		PlayerList temp = new PlayerList();
-		for (int i = 0; i < playerList.getNumberOfPlayers(); i++) {
-			if (playerList.getPlayer(i).getPosition() == position)
-				temp.addPlayer(playerList.getPlayer(i));
-		}
-		return temp;
-	} 
-	
+	return 	playerList.getPlayersByPosition(position);
+	}
+
+	/**
+	 * Adds a player object to the list and refreshes the list
+	 * @param player Object that should be added.
+	 */
 	public void addPlayer(Player player) {		
 		playerList.addPlayer(player);
 
 		playerAdapter.savePlayers(playerList);
 	}
-	
+
+	/**
+	 *  gets the information about object at position @param
+	 * @param index is the parameter that the use enter to pick object at position
+	 * @return object of Player
+	 */
+	public Player getPlayer(int index) {
+	 return	playerList.getPlayer(index);
+	}
+
+	/**
+	 *  counts the objects in the list
+	 * @return the number of object stored
+	 */
+	public int getNumberOfPlayers() {
+		return playerList.getNumberOfPlayers();
+	}
+
+	/**
+	 *
+	 * @param number
+	 * @return
+	 */
+	public Player getPlayerByNumber(int number) {
+		return playerList.getPlayerbyNumber(number);
+	}
+
+	/**
+	 *  Creates Match object and it being added to the list
+	 * @param match
+	 */
+	public void addMatch(Match match) {
+		matchesList.addMatch(match);
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public int getNumberOfMatches() {
+		return matchesList.getNumberOfMatches();
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public MatchesList getAllUpcomingMatches() {
+		return matchesList.getAllUpcomingMatches();
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public MatchesList getAllPastMatches() {
+		return matchesList.getAllPastMatches();
+	}
+
+	/**
+	 *
+	 * @param type
+	 * @return
+	 */
+	public MatchesList getMatchByType(String type) {
+		return matchesList.getMatchesByType(type);
+	}
+
+	/**
+	 *
+	 * @param place
+	 * @return
+	 */
+	public MatchesList getMatchByPlace(String place) {
+		return matchesList.getMatchesByPlace(place);
+	}
+
+	/**
+	 *
+	 * @param opponent
+	 * @return
+	 */
+	public MatchesList getMatchByOpponent(String opponent) {
+		return matchesList.getMatchesByOpponent(opponent);
+	}
+
+	/**
+	 *
+	 * @param date
+	 * @return
+	 */
+	public MatchesList getMatchByDate(MyDate date) {
+		return matchesList.getMatchByDate(date);
+	}
+
+	/**
+	 *
+	 * @param match
+	 */
+	public void removeMatch(Match match) {
+		matchesList.removeMatch(match);
+	}
+
 }

@@ -36,17 +36,17 @@ public class MatchSettings{
     @FXML private TableColumn teamPoisitionCol;
     @FXML private TableView<Player> listView;
     @FXML private TableView<Player> teamView;
+    private Stage stage;
 
 
 
     private ProgramMediator mediator;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-    public MatchSettings(ProgramMediator mediator){
+
+    public MatchSettings(ProgramMediator mediator,Stage stage){
         this.mediator=mediator;
+        this.stage= stage;
     }
 
     public void AddButtonAction (ActionEvent e){
@@ -58,6 +58,7 @@ public class MatchSettings{
 
     }
 
+
     public void removeButtonAction(ActionEvent e)
     {
         teamView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -66,6 +67,15 @@ public class MatchSettings{
            teamView.getSelectionModel().getSelectedItems().remove(i);
 
        }
+    }
+
+    public void closeButtonAction(ActionEvent e) {
+        stage.hide();
+    }
+
+    public TableView<Player> getListView()
+    {
+        return listView;
     }
 
     @FXML
@@ -99,7 +109,7 @@ public class MatchSettings{
         } else {
             boolean duplicates = false;
             for (int i = 0; i < mediator.getAllMatches().getNumberOfMatches(); i++) {
-                if (mediator.getAllMatches().getAllMatches().get(i).getDate().equals(match.getDate())) {
+                if (mediator.getAllMatches().getMatchByIndex(i).getDate().equals(match.getDate())) {
 
                     duplicates = true;
 
@@ -109,7 +119,7 @@ public class MatchSettings{
             }
 
             if (!duplicates) {
-                mediator.getAllMatches().getAllMatches().add(match);
+                mediator.addMatch(match);
                 Alert allen = new Alert(AlertType.CONFIRMATION);
                 allen.setTitle("You have successfully added a match!");
                 allen.setContentText("You have successfully added a match!");

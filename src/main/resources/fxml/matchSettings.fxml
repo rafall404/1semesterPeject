@@ -145,7 +145,7 @@
                </font></Label>
 				<Button fx:id="Remove" mnemonicParsing="false" onAction="#removeButtonAction" text="Remove" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
 				<Button fx:id="add" mnemonicParsing="false" onAction="#AddButtonAction" text="Add" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
-				<Button fx:id="cancel" mnemonicParsing="false" text="Cancel" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+				<Button fx:id="cancel" mnemonicParsing="false" onAction="#closeButtonAction" text="Cancel" GridPane.halignment="LEFT" GridPane.rowIndex="3">
 					<GridPane.margin>
 						<Insets />
 					</GridPane.margin>
