@@ -13,10 +13,6 @@
 	<tabs>
 		<Tab text="Matches">
 			<content>
-<<<<<<< HEAD
-				<fx:include fx:id="matchSettings" source="matchSettings.fxml" />
-=======
->>>>>>> ca3361ee933515fae23ef76b13997bbf9cfe5090
 				<BorderPane prefHeight="200.0" prefWidth="200.0">
 					<center>
 						<TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -47,10 +43,6 @@
 		</Tab>
 		<Tab text="Players">
 			<content>
-<<<<<<< HEAD
-				<fx:include fx:id="PlayerSettings" source="playerSettings.fxml" />
-=======
->>>>>>> ca3361ee933515fae23ef76b13997bbf9cfe5090
 				<BorderPane prefHeight="200.0" prefWidth="200.0">
 					<right>
 						<VBox prefHeight="561.0" prefWidth="148.0" BorderPane.alignment="CENTER">
