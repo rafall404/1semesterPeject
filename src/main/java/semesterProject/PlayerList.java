@@ -141,4 +141,5 @@ public class PlayerList implements Serializable
       return "The players are:" + "/n" + player;
    }
 
+   public ArrayList<Player> convertToAList() {return player;}
 }

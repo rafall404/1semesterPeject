@@ -2,6 +2,7 @@
 package semesterProject;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,6 +104,14 @@ public class Main extends Application {
 		}
 	}
 
+	public void updatePlayersA() {
+		matchpage.getListView().getItems().clear();
+		PlayerList allPlayers = mediator.getAllPlayers();
+		for (int i = 0; i < allPlayers.getNumberOfPlayers(); i++) {
+			matchpage.getListView().getItems().add(allPlayers.getPlayer(i));
+		}
+	}
+
 	public void openMatchEdit(ActionEvent e) throws IOException {
 		addMatchStage = new Stage();
 
@@ -114,18 +123,7 @@ public class Main extends Application {
 		addMatchStage.setTitle("Add Match");
 		addMatchStage.setScene(new Scene(root));
 
-		for( int n= 0; n<mediator.getNumberOfPlayers(); n++){
-			String listName= mediator.getAllPlayers().getPlayer(n).getName();
-			int number= mediator.getAllPlayers().getPlayer(n).getNumber();
-			char position = mediator.getAllPlayers().getPlayer(n).getPosition();
-
-			Player player = new Player(number, listName, position);
-
-                   matchpage.getListView().getItems().add(player);
-
-
-		}
-
+		System.out.println(mediator.getNumberOfPlayers());
 		addMatchStage.show();
 	}
 
