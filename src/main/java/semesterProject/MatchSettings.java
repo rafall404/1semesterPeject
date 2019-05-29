@@ -36,18 +36,17 @@ public class MatchSettings{
     @FXML private TableColumn teamPoisitionCol;
     @FXML private TableView<Player> listView;
     @FXML private TableView<Player> teamView;
-
+    private Stage stage;
 
 
 
     private ProgramMediator mediator;
-    private Main mainController;
 
 
 
-    public  void init(ProgramMediator mediator, Main main){
+    public MatchSettings(ProgramMediator mediator,Stage stage){
         this.mediator=mediator;
-        mainController = main;
+        this.stage= stage;
     }
 
     public void AddButtonAction (ActionEvent e){
@@ -59,6 +58,7 @@ public class MatchSettings{
 
     }
 
+
     public void removeButtonAction(ActionEvent e)
     {
         teamView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -69,7 +69,17 @@ public class MatchSettings{
        }
     }
 
-    public void saveButtonAction(ActionEvent e)
+    public void closeButtonAction(ActionEvent e) {
+        stage.hide();
+    }
+
+    public TableView<Player> getListView()
+    {
+        return listView;
+    }
+
+    @FXML
+    private void saveButtonAction(ActionEvent e)
     {
         Alert alert= new Alert(AlertType.WARNING);
         if(date.getPromptText().isEmpty() || type.getPromptText().equals("Choose match type") || place.getPromptText().equals("Choose match place") ||
@@ -99,7 +109,7 @@ public class MatchSettings{
         } else {
             boolean duplicates = false;
             for (int i = 0; i < mediator.getAllMatches().getNumberOfMatches(); i++) {
-                if (mediator.getAllMatches().getAllMatches().get(i).getDate().equals(match.getDate())) {
+                if (mediator.getAllMatches().getMatchByIndex(i).getDate().equals(match.getDate())) {
 
                     duplicates = true;
 
@@ -109,7 +119,7 @@ public class MatchSettings{
             }
 
             if (!duplicates) {
-                mediator.getAllMatches().getAllMatches().add(match);
+                mediator.addMatch(match);
                 Alert allen = new Alert(AlertType.CONFIRMATION);
                 allen.setTitle("You have successfully added a match!");
                 allen.setContentText("You have successfully added a match!");

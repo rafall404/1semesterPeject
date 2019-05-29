@@ -17,6 +17,7 @@ public class MatchesList implements Serializable
     */
    public MatchesList()
    {
+
       matches = new ArrayList<Match>();
    }
    
@@ -35,7 +36,8 @@ public class MatchesList implements Serializable
    {
       return matches.size();
    }
-   
+
+
    /**
     * @return List of all player objects from playerList
     */
@@ -48,18 +50,18 @@ public class MatchesList implements Serializable
     * @param temp the temp is an ArrayList object of type Match
     * @return if Matches at int i is passed, return player list
     */
-   public ArrayList<Match> getAllPastMatches()
+   public MatchesList getAllPastMatches()
    {
-      ArrayList<Match> temp = new ArrayList<Match>();
+      MatchesList temp = new MatchesList();
 
       for (int i = 0; i < matches.size(); i++)
       {
          if (matches.get(i).isMatchPassed())
-            ;
          {
-            temp.add(matches.get(i));
+            temp.addMatch(matches.get(i));
          }
       }
+
       return temp;
    }
 
@@ -67,16 +69,16 @@ public class MatchesList implements Serializable
     * @param temp the temp is an ArrayList object of type Match
     * @return if Matches at int i is upcoming, return player list
     */
-   public ArrayList<Match> getAllUpcomingMatches()
+   public MatchesList getAllUpcomingMatches()
    {
-      ArrayList<Match> temp = new ArrayList<Match>();
+      MatchesList temp = new MatchesList();
 
       for (int i = 0; i < matches.size(); i++)
       {
          if (!(matches.get(i).isMatchPassed()))
             ;
          {
-            temp.add(matches.get(i));
+            temp.addMatch(matches.get(i));
          }
       }
       return temp;
@@ -87,15 +89,15 @@ public class MatchesList implements Serializable
     * @param type the type in the list of the Match Object
     * @return the Match with type if one exists, else return null
     */
-   public ArrayList<Match> getMatchesByType(String type)
+   public MatchesList getMatchesByType(String type)
    {
-      ArrayList<Match> temp = new ArrayList<Match>();
+      MatchesList temp = new MatchesList();
 
       for (int i = 0; i < matches.size(); i++)
       {
          if (matches.get(i).getType().equals(type))
          {
-            temp.add(matches.get(i));
+            temp.addMatch(matches.get(i));
          }
       }
       return temp;
@@ -106,15 +108,15 @@ public class MatchesList implements Serializable
     * @param place the place in the list of the Match Object
     * @return the Match with place if one exists, else return null
     */
-   public ArrayList<Match> getMatchesByPlace(String place)
+   public MatchesList getMatchesByPlace(String place)
    {
-      ArrayList<Match> temp = new ArrayList<Match>();
+      MatchesList temp = new MatchesList();
 
       for (int i = 0; i < matches.size(); i++)
       {
          if (matches.get(i).getPlace().equals(place))
          {
-            temp.add(matches.get(i));
+            temp.addMatch(matches.get(i));
          }
       }
       return temp;
@@ -125,35 +127,38 @@ public class MatchesList implements Serializable
     * @param opponent the opponent in the list of the Match Object
     * @return the Match with opponent if one exists, else return null
     */
-   public ArrayList<Match> getMatchesByOpponent(String opponent)
+   public MatchesList getMatchesByOpponent(String opponent)
    {
-      ArrayList<Match> temp = new ArrayList<Match>();
+      MatchesList temp = new MatchesList();
 
       for (int i = 0; i < matches.size(); i++)
       {
          if (matches.get(i).getPlace().equals(opponent))
          {
-            temp.add(matches.get(i));
+            temp.addMatch(matches.get(i));
          }
       }
       return temp;
    }
-
+   public Match getMatchByIndex(int index)
+   {
+      return matches.get(index);
+   }
    /**
     * Gets a match from the List by type
     * @param type the type in the list of the Match Object
     * @return the Match with type if one exists, else return null
     */
-   public ArrayList<Match> getMatchByDate(MyDate date)
+   public MatchesList getMatchByDate(MyDate date)
    {
-      ArrayList<Match> temp = new ArrayList<Match>();
+      MatchesList temp = new MatchesList();
 
       for (int i = 0; i < matches.size(); i++)
       {
          if (matches.get(i).getDate().equals(date))
             ;
          {
-            temp.add(matches.get(i));
+            temp.addMatch(matches.get(i));
          }
       }
       return temp;
@@ -168,4 +173,7 @@ public class MatchesList implements Serializable
       matches.remove(match);
    }
 
+   public ArrayList<Match> convertToAList() {
+      return matches;
+   }
 }

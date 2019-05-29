@@ -37,7 +37,7 @@ public class Player implements Serializable
     * @param number the number of the Player will be set
     * @param position the position will be set
     */
-   public Player(String name, int number, char position)
+   public Player(int number, String name, char position)
    {
       this.name = name;
       this.number = number;
