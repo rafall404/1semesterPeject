@@ -23,11 +23,11 @@ public class MatchesList implements Serializable
    
    /**
     * add a player to the list
-    * @param player the player to add to the list
+    * @param match the player to add to the list
     */
    public void addMatch(Match match)
    {
-      matches.add(match);
+      this.matches.add(match);
    }
    /**
     * @return the number of the Matches in the MatchList
@@ -47,7 +47,7 @@ public class MatchesList implements Serializable
    }
    
    /**
-    * @param temp the temp is an ArrayList object of type Match
+
     * @return if Matches at int i is passed, return player list
     */
    public MatchesList getAllPastMatches()
@@ -66,7 +66,6 @@ public class MatchesList implements Serializable
    }
 
    /**
-    * @param temp the temp is an ArrayList object of type Match
     * @return if Matches at int i is upcoming, return player list
     */
    public MatchesList getAllUpcomingMatches()
@@ -146,7 +145,7 @@ public class MatchesList implements Serializable
    }
    /**
     * Gets a match from the List by type
-    * @param type the type in the list of the Match Object
+    * @param date the date in the list of the Match Object
     * @return the Match with type if one exists, else return null
     */
    public MatchesList getMatchByDate(MyDate date)
@@ -175,5 +174,12 @@ public class MatchesList implements Serializable
 
    public ArrayList<Match> convertToAList() {
       return matches;
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder sb = new StringBuilder("MATCHES LIST: ");
+      sb.append(matches.toString());
+      return sb.toString();
    }
 }

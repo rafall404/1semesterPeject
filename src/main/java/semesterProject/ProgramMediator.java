@@ -23,6 +23,8 @@ public class ProgramMediator
 		this.matchesAdapter = new MatchesAdapter("matches.bin");
 		this.matchesList = matchesAdapter.loadAllMatches();
 		this.playerList = playerAdapter.loadAllPlayers();
+
+		System.out.println(matchesList);
 	}
 
 	/**
@@ -92,6 +94,10 @@ public class ProgramMediator
 		playerAdapter.savePlayers(playerList);
 	}
 
+	public void editPlayer(Player player){
+		playerAdapter.savePlayers(playerList);
+	}
+
 	/**
 	 *  gets the information about object at position @param
 	 * @param index is the parameter that the use enter to pick object at position
@@ -124,6 +130,10 @@ public class ProgramMediator
 	 */
 	public void addMatch(Match match) {
 		matchesList.addMatch(match);
+
+		System.out.println("MATCHES LIST ADD: " + matchesList);
+
+		matchesAdapter.saveMatches(matchesList);
 	}
 
 	/**
@@ -190,8 +200,10 @@ public class ProgramMediator
 	 *
 	 * @param match
 	 */
-	public void removeMatch(Match match) {
+	public void removeMatch(Match match)
+	{
 		matchesList.removeMatch(match);
+		matchesAdapter.saveMatches(matchesList);
 	}
 
 }

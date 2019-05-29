@@ -44,13 +44,27 @@ public class PlayerSettings {
     private ProgramMediator mediator;
     private Stage stage;
     private Main main;
+    private Player playerEdit;
 
+    public PlayerSettings(ProgramMediator mediator, Stage stage, Main main, Player player) {
+        this(mediator, stage, main);
+        this.playerEdit = player;
+    }
 
-    public PlayerSettings(ProgramMediator mediator, Stage stage,Main main) {
+    public PlayerSettings(ProgramMediator mediator, Stage stage, Main main) {
         this.mediator = mediator;
         this.stage = stage;
         this.main = main;
 
+    }
+
+    @FXML
+    private void initialize() {
+        name.setText(playerEdit.getName());
+        number.setText(""+playerEdit.getNumber());
+        position.setValue(String.valueOf(playerEdit.getPosition()));
+        isInjured.setSelected(playerEdit.isInjured());
+        isSuspended.setSelected(playerEdit.isInjured());
     }
 
     public Parent load() throws IOException {
@@ -59,13 +73,12 @@ public class PlayerSettings {
         return loader.load();
     }
 
-
-
     @FXML
     private void saveButtonAction(ActionEvent e) {
-        Alert alert = new Alert(AlertType.WARNING);
+
 
         if (name.getText().isEmpty() || number.getText().isEmpty() || position.getValue().equals("Pick Position")) {
+            Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Warning");
             alert.setContentText("Input all your fields");
             alert.showAndWait();
@@ -73,35 +86,42 @@ public class PlayerSettings {
 
             String playerName = name.getText();
             String playerNumber = number.getText().trim();
-            String PlayerPosition = position.getValue().toString();
+            String playerPosition = position.getValue().toString();
             boolean isPlayerInjured = isInjured.isSelected();
             boolean isPlayerSuspended = isSuspended.isSelected();
 
-            Player player = new Player(playerName, (Integer.parseInt(playerNumber)), PlayerPosition.charAt(0),
-                    isPlayerInjured, isPlayerSuspended);
+            if (playerEdit == null) {
+                Player player = new Player(playerName, (Integer.parseInt(playerNumber)), playerPosition.charAt(0),
+                        isPlayerInjured, isPlayerSuspended);
 
+                boolean duplicates = false;
+                for (int i = 0; i < mediator.getAllPlayers().getNumberOfPlayers(); i++) {
+                    if (mediator.getAllPlayers().getPlayer(i).getNumber() == (player.getNumber())) {
 
-            boolean duplicates = false;
-            for (int i = 0; i < mediator.getAllPlayers().getNumberOfPlayers(); i++) {
-                if (mediator.getAllPlayers().getPlayer(i).getNumber() == (player.getNumber())) {
+                        duplicates = true;
 
-                    duplicates = true;
-
-                    Alert alert1 = new Alert(AlertType.WARNING);
-                    alert1.setTitle("Fields have already been taken!");
-                    alert1.setHeaderText("Fields have already taken!");
-                    alert.showAndWait();
-                    System.out.println("fm;kjjn");
-                    break;
+                        Alert alert = new Alert(AlertType.WARNING);
+                        alert.setTitle("Fields have already been taken!");
+                        alert.setHeaderText("Fields have already taken!");
+                        alert.showAndWait();
+                        break;
+                    }
                 }
-            }
 
-            if(!duplicates) {
-                mediator.addPlayer(player);
+                if (!duplicates) {
+                    mediator.addPlayer(player);
+                    stage.close();
+                }
+            } else {
+                playerEdit.setName(playerName);
+                playerEdit.setNumber(Integer.parseInt(playerNumber));
+                playerEdit.setPosition(playerPosition.charAt(0));
+                playerEdit.setIsInjured(isPlayerInjured);
+                playerEdit.setIsSuspended(isPlayerSuspended);
                 stage.close();
-
             }
         }
+        mediator.editPlayer(playerEdit);
         main.updatePlayers();
 
     }
@@ -110,10 +130,23 @@ public class PlayerSettings {
         stage.hide();
     }
 
+    public TextField getName() {
+        return this.name;
+    }
 
+    public TextField getNumber() {
+        return number;
+    }
 
+    public ComboBox<String> getPosition() {
+        return position;
+    }
 
+    public CheckBox getIsInjured() {
+        return isInjured;
+    }
 
-
-
+    public CheckBox getIsSuspended() {
+        return isSuspended;
+    }
 }

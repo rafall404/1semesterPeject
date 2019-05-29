@@ -49,6 +49,19 @@ public class Main extends Application {
 	private TableView<Player> players;
 
 	@FXML
+	private  TableView<Match> matches;
+	@FXML
+	private TableColumn<Match,MyDate> matchDate;
+	@FXML
+	private TableColumn<Match,String> matchOpponent;
+
+	@FXML
+	private  TableColumn<Match,String> matchPlace;
+
+	@FXML
+	private TableColumn<Match,String> matchType;
+
+	@FXML
 	private TableColumn<Player, String> nameCol;
 	@FXML
 	private TableColumn<Player, Integer> numberCol;
@@ -61,6 +74,8 @@ public class Main extends Application {
 
 	private Stage addPlayerStage;
 	private Stage addMatchStage;
+
+
 	private  MatchSettings matchpage;
 	private  PlayerSettings playerPage;
 
@@ -79,7 +94,13 @@ public class Main extends Application {
 		injuredCol.setCellValueFactory(new PropertyValueFactory<Player, Boolean>("injured"));
 		suspendedCol.setCellValueFactory(new PropertyValueFactory<Player, Boolean>("suspended"));
 
+		matchDate.setCellValueFactory(new PropertyValueFactory<Match,MyDate>("Date"));
+		matchOpponent.setCellValueFactory(new PropertyValueFactory<Match,String>("Opponent"));
+		matchPlace.setCellValueFactory(new PropertyValueFactory<Match,String>("Place"));
+		matchType.setCellValueFactory(new PropertyValueFactory<Match,String>("Type"));
+
 		updatePlayers();
+		updateMatches();
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -104,6 +125,7 @@ public class Main extends Application {
 		}
 	}
 
+
 	public void updatePlayersA() {
 		matchpage.getListView().getItems().clear();
 		PlayerList allPlayers = mediator.getAllPlayers();
@@ -112,11 +134,33 @@ public class Main extends Application {
 		}
 	}
 
+	public void updateMatches()
+	{
+		matches.getItems().clear();
+		MatchesList allMatches= mediator.getAllMatches();
+		for(int i=0; i<allMatches.getNumberOfMatches();i++)
+		{
+			matches.getItems().add(allMatches.getMatchByIndex(i));
+		}
+	}
+
+	public void upcomingMatchesAction()
+	{
+		matches.getItems().clear();
+		for(int i=0; i<matches.getItems().size();i++)
+		{
+			if(!(matches.getItems().get(i).isMatchPassed()))
+			{
+				matches.getItems().add(matches.getItems().get(i));
+			}
+		}
+	}
+
 	public void openMatchEdit(ActionEvent e) throws IOException {
 		addMatchStage = new Stage();
 
 		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/fxml/matchSettings.fxml"));
-		fxmlLoader1.setController(new MatchSettings(mediator, addMatchStage));
+		fxmlLoader1.setController(new MatchSettings(mediator, addMatchStage,this));
 		Parent root = fxmlLoader1.load();
 
 		System.out.println("CREATE STAGE: " + addPlayerStage);
@@ -125,6 +169,29 @@ public class Main extends Application {
 
 		System.out.println(mediator.getNumberOfPlayers());
 		addMatchStage.show();
+	}
+
+	public TableView getMatchesTable()
+	{
+		return matches;
+	}
+
+	public void  editPlayerAction(ActionEvent e) throws IOException
+	{
+		Player p = players.getSelectionModel().getSelectedItem();
+
+		addPlayerStage = new Stage();
+		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/fxml/playerSettings.fxml"));
+		playerPage = new PlayerSettings(mediator,addPlayerStage,this, p);
+		fxmlLoader1.setController(playerPage);
+		Parent root = fxmlLoader1.load();
+		System.out.println("CREATE STAGE: " + addPlayerStage);
+		addPlayerStage.setTitle("Add Player");
+		addPlayerStage.setScene(new Scene(root));
+
+
+
+		addPlayerStage.show();
 	}
 
 	public void openPlayerEdit(ActionEvent e) throws IOException {
@@ -150,6 +217,15 @@ public class Main extends Application {
 		}
 		System.out.println("dgjvoudv");
 		updatePlayers();
+	}
+
+	public void matchRemoveButtonAction(ActionEvent e)
+	{
+		List<Match> p = matches.getSelectionModel().getSelectedItems();
+		for (int i = 0; i < p.size(); i++) {
+			mediator.removeMatch(p.get(i));
+		}
+		updateMatches();
 	}
 
 

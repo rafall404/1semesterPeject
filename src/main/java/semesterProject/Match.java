@@ -16,7 +16,6 @@ public class Match implements Serializable
    private String place;
    private String opponent;
    private PlayerList team;
-
    /**
     * @param type the type of the match will be set
     * @param date the date of the match will be set

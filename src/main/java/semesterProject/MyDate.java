@@ -1,4 +1,5 @@
 package semesterProject;
+import java.io.Serializable;
 
 import java.util.GregorianCalendar;
 
@@ -7,7 +8,7 @@ import java.util.GregorianCalendar;
  * @author Aleksandrs Fjodorovs,
  * @version 1.0
  */
-public class MyDate
+public class MyDate implements Serializable
 {
    private int day;
    private int month;

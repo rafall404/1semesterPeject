@@ -21,6 +21,11 @@ public class PlayerList implements Serializable
       this.player = new ArrayList<Player>();
 
    }
+
+   public void setPlayerList(ArrayList<Player> player)
+   {
+      this.player=player;
+   }
    /**
     * Adds a player to the list
     * @param player the player to add to the list

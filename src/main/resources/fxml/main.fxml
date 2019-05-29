@@ -15,12 +15,12 @@
 			<content>
 				<BorderPane prefHeight="200.0" prefWidth="200.0">
 					<center>
-						<TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+						<TableView fx:id="matches" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 							<columns>
-								<TableColumn prefWidth="166.0" text="Date" />
-								<TableColumn prefWidth="166.0" text="Opponent" />
-								<TableColumn prefWidth="166.0" text="Place" />
-								<TableColumn prefWidth="166.0" text="Type" />
+								<TableColumn fx:id="matchDate" prefWidth="166.0" text="Date" />
+								<TableColumn fx:id="matchOpponent" prefWidth="166.0" text="Opponent" />
+								<TableColumn fx:id="matchPlace" prefWidth="166.0" text="Place" />
+								<TableColumn fx:id="matchType" prefWidth="166.0" text="Type" />
 							</columns>
 						</TableView>
 					</center>
@@ -29,10 +29,10 @@
 							<children>
 								<Button fx:id="AddMatch" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openMatchEdit" text="Add Match" />
                         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Edit Match" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Remove Matches" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#matchRemoveButtonAction" text="Remove Matches" />
 								<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Print" />
 								<Region VBox.vgrow="ALWAYS" />
-								<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Upcoming Matches" />
+								<Button maxWidth="1.7976931348623157E308" onAction="#upcomingMatchesAction" mnemonicParsing="false" text="Upcoming Matches" />
 								<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="History of Matches" />
 								<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="All Matches" />
 							</children>
@@ -48,7 +48,7 @@
 						<VBox prefHeight="561.0" prefWidth="148.0" BorderPane.alignment="CENTER">
 							<children>
 								<Button fx:id="AddPlayer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openPlayerEdit" text="Add Player" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Edit Player" />
+                                <Button fx:id="editPlayer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editPlayerAction" text="Edit Player" />
 								<Button fx:id="removeButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#removeButtonAction" text="Remove Players" />
 							</children>
 						</VBox>
