@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -159,16 +160,16 @@ public class Main extends Application {
 
 	public void upcomingMatchesAction(ActionEvent e)
 	{
-		matches.getItems().clear();
-		for(int i=0; i<matches.getItems().size();i++)
-		{
+		System.out.println(mediator.getAllUpcomingMatches());
+		matches.setItems(FXCollections.observableList(mediator.getAllUpcomingMatches().convertToAList()));
+	}
 
-			if(!(matches.getItems().get(i).isMatchPassed()))
-			{
+	public void historyMatchesAction(ActionEvent e){
+		matches.setItems(FXCollections.observableList(mediator.getAllPastMatches().convertToAList()));
+	}
 
-
-			}
-		}
+	public void allMatchesAction(ActionEvent e){
+		matches.setItems(FXCollections.observableList(mediator.getAllMatches().convertToAList()));
 	}
 
 	public void openMatchEdit(ActionEvent e) throws IOException {

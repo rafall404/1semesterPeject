@@ -75,7 +75,6 @@ public class MatchesList implements Serializable
       for (int i = 0; i < matches.size(); i++)
       {
          if (!(matches.get(i).isMatchPassed()))
-            ;
          {
             temp.addMatch(matches.get(i));
          }
