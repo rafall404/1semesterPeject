@@ -15,9 +15,9 @@ public class MyDate implements Serializable
    private int year;
    
    /**
-    * @param day the day of myDate will be set
-    * @param month the month of myDate will be set
-    * @param year the year of myDate will be set
+    * @param d the day of myDate will be set
+    * @param m the month of myDate will be set
+    * @param y the year of myDate will be set
     */
    public MyDate(int d, int m, int y)
    {
@@ -41,7 +41,7 @@ public class MyDate implements Serializable
     */
    public String toString()
    {
-      return " " + day + "/" + month + "/" + year;
+      return day + "/" + month + "/" + year;
    }
 
    /**

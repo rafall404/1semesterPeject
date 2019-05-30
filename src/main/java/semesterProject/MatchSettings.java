@@ -58,6 +58,7 @@ public class MatchSettings {
     private Stage stage;
     private ProgramMediator mediator;
     private Main main;
+    private Match matchEdit;
 
     public TableColumn<Player, Integer> getListNumberCol() {
         return listNumberCol;
@@ -77,6 +78,27 @@ public class MatchSettings {
         this.mediator = mediator;
         this.stage = stage;
 
+    }
+
+    public MatchSettings(ProgramMediator mediator,Stage stage,Main main, Match match) {
+        this(mediator,stage,main);
+        this.matchEdit = match;
+    }
+
+    @FXML
+    private void initialize() {
+        if(main.getEdit()==true) {
+            //here should be date
+            opponent.setText(matchEdit.getOpponent());
+            place.setAccessibleText(matchEdit.getPlace());
+            type.setAccessibleText(matchEdit.getType());
+            //here should be team
+        }
+    }
+    public Parent load() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MatchSettings.fxml"));
+        loader.setController(this);
+        return loader.load();
     }
 
     public void AddButtonAction(ActionEvent e) {
@@ -160,27 +182,36 @@ public class MatchSettings {
             PlayerList tp= new PlayerList();
             tp.setPlayerList(teamplayers);
 
+            if (matchEdit == null) {
+                Match match = new Match(new MyDate(matchDay, matchMonth, matchYear), matchOpponent, matchPlace, matchtype, tp);
+                match.setPlayerList(tp);
 
-            Match match = new Match(new MyDate(matchDay, matchMonth, matchYear), matchOpponent, matchPlace, matchtype,tp);
-            match.setPlayerList(tp);
-            boolean duplicates = false;
-            System.out.println(match.toString());
-            for (int i = 0; i < mediator.getAllMatches().getNumberOfMatches(); i++) {
-                if (mediator.getAllMatches().getMatchByIndex(i).getDate().equals(match.getDate())) {
+                boolean duplicates = false;
 
-                    duplicates = true;
+                for (int i = 0; i < mediator.getAllMatches().getNumberOfMatches(); i++) {
+                    if (mediator.getAllMatches().getMatchByIndex(i).getDate().equals(match.getDate())) {
 
-                    Alert alert3 = new Alert(AlertType.WARNING);
-                    alert3.setTitle("Fields have already been taken!");
-                    alert3.setHeaderText("Fields have already taken!");
-                    alert3.showAndWait();
-                    break;
+                        duplicates = true;
+
+                        Alert alert3 = new Alert(AlertType.WARNING);
+                        alert3.setTitle("Fields have already been taken!");
+                        alert3.setHeaderText("Fields have already taken!");
+                        alert3.showAndWait();
+                        break;
+                    }
                 }
-            }
 
-            if (!duplicates) {
+                if (!duplicates) {
 
-                mediator.addMatch(match);
+                    mediator.addMatch(match);
+                    stage.close();
+                }
+            } else {
+                matchEdit.setDate(MyDate.today());
+                matchEdit.setOpponent(getOpponent().toString());
+                matchEdit.setPlace(matchPlace);
+                matchEdit.setType(matchtype);
+                matchEdit.setPlayerList(tp);
                 stage.close();
             }
 
@@ -189,7 +220,21 @@ public class MatchSettings {
         main.getMatchesTable().refresh();
 
     }
+
+    public DatePicker getDate() {return this.date;}
+
+    public ComboBox getPlace() { return place; }
+
+    public ComboBox getType() {
+        return type;
+    }
+
+    public TextField getOpponent() {
+        return opponent;
+    }
+
 }
+
 
 
 

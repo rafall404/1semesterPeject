@@ -28,7 +28,7 @@
 						<VBox prefHeight="561.0" prefWidth="148.0" BorderPane.alignment="CENTER">
 							<children>
 								<Button fx:id="AddMatch" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openMatchEdit" text="Add Match" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Edit Match" />
+                        <Button maxWidth="1.7976931348623157E308" onAction="#editMatchesEdit" mnemonicParsing="false" text="Edit Match" />
                         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#matchRemoveButtonAction" text="Remove Matches" />
 								<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Print" />
 								<Region VBox.vgrow="ALWAYS" />

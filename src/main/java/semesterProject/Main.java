@@ -171,7 +171,7 @@ public class Main extends Application {
 	public void allMatchesAction(ActionEvent e){
 		matches.setItems(FXCollections.observableList(mediator.getAllMatches().convertToAList()));
 	}
-
+     //CREATE MATCH
 	public void openMatchEdit(ActionEvent e) throws IOException {
 		addMatchStage = new Stage();
 
@@ -183,9 +183,26 @@ public class Main extends Application {
 		addMatchStage.setTitle("Add Match");
 		addMatchStage.setScene(new Scene(root));
 
+		setEdit(false);
+
 		System.out.println(mediator.getNumberOfPlayers());
 		addMatchStage.show();
 
+	}
+	//EDIT MATCH
+    public void editMatchesEdit(ActionEvent e) throws IOException {
+		addMatchStage = new Stage();
+		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/fxml/matchSettings.fxml"));
+		fxmlLoader1.setController(new MatchSettings(mediator,addMatchStage,this));
+		Parent root = fxmlLoader1.load();
+
+		System.out.println("CREATE STAGE: " + addPlayerStage);
+		addMatchStage.setTitle("Add Player");
+		addMatchStage.setScene(new Scene(root));
+
+		setEdit(true);
+
+		addMatchStage.show();
 	}
 
 	public TableView getMatchesTable()
@@ -208,12 +225,14 @@ public class Main extends Application {
 
 		setEdit(false);
 
+
 		addPlayerStage.show();
 	}
 
 
 	//EDIT PLAYER
 	public void openPlayerEdit(ActionEvent e) throws IOException {
+
 		addPlayerStage = new Stage();
 		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/fxml/playerSettings.fxml"));
 		fxmlLoader1.setController(new PlayerSettings(mediator,addPlayerStage,this));
