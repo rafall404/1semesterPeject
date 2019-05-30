@@ -153,14 +153,15 @@ public class MatchSettings {
             String matchtype = type.getValue().toString();
             String matchPlace = place.getValue().toString();
             String matchOpponent = opponent.getText();
-             List<Player> p= teamView.getItems();
 
-             ArrayList<Player> teamplayers=new ArrayList<Player>(p);
+            List<Player> p= teamView.getItems();
+
+            ArrayList<Player> teamplayers=new ArrayList<Player>(p);
             PlayerList tp= new PlayerList();
-             tp.setPlayerList(teamplayers);
+            tp.setPlayerList(teamplayers);
 
 
-            Match match = new Match(new MyDate(matchDay, matchMonth, matchYear), matchOpponent, matchPlace, matchtype);
+            Match match = new Match(new MyDate(matchDay, matchMonth, matchYear), matchOpponent, matchPlace, matchtype,tp);
             match.setPlayerList(tp);
             boolean duplicates = false;
             System.out.println(match.toString());

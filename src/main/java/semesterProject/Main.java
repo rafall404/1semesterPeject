@@ -24,6 +24,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 public class Main extends Application {
 	
 	@FXML
@@ -80,6 +82,17 @@ public class Main extends Application {
 	private  PlayerSettings playerPage;
 
 	private ProgramMediator mediator;
+
+	//Flag for EDIT player or ADDing new player
+	private boolean edit = false;
+
+	public boolean getEdit(){
+		return edit;
+	}
+
+	public void setEdit(boolean edit){
+		this.edit = edit;
+	}
 
 
 	public void start(Stage primaryStage) throws IOException {
@@ -144,14 +157,16 @@ public class Main extends Application {
 		}
 	}
 
-	public void upcomingMatchesAction()
+	public void upcomingMatchesAction(ActionEvent e)
 	{
 		matches.getItems().clear();
 		for(int i=0; i<matches.getItems().size();i++)
 		{
+
 			if(!(matches.getItems().get(i).isMatchPassed()))
 			{
-				matches.getItems().add(matches.getItems().get(i));
+
+
 			}
 		}
 	}
@@ -169,13 +184,14 @@ public class Main extends Application {
 
 		System.out.println(mediator.getNumberOfPlayers());
 		addMatchStage.show();
+
 	}
 
 	public TableView getMatchesTable()
 	{
 		return matches;
 	}
-
+	//NEW PLAYER
 	public void  editPlayerAction(ActionEvent e) throws IOException
 	{
 		Player p = players.getSelectionModel().getSelectedItem();
@@ -189,11 +205,13 @@ public class Main extends Application {
 		addPlayerStage.setTitle("Add Player");
 		addPlayerStage.setScene(new Scene(root));
 
-
+		setEdit(false);
 
 		addPlayerStage.show();
 	}
 
+
+	//EDIT PLAYER
 	public void openPlayerEdit(ActionEvent e) throws IOException {
 		addPlayerStage = new Stage();
 		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/fxml/playerSettings.fxml"));
@@ -202,6 +220,8 @@ public class Main extends Application {
 		System.out.println("CREATE STAGE: " + addPlayerStage);
 		addPlayerStage.setTitle("Add Player");
 		addPlayerStage.setScene(new Scene(root));
+
+		setEdit(true);
 
 		addPlayerStage.show();
 
@@ -214,8 +234,7 @@ public class Main extends Application {
 		for (int i = 0; i < p.size(); i++) {
 			mediator.removePlayer(p.get(i));
 
-		}
-		System.out.println("dgjvoudv");
+		};
 		updatePlayers();
 	}
 

@@ -46,6 +46,8 @@ public class PlayerSettings {
     private Main main;
     private Player playerEdit;
 
+
+
     public PlayerSettings(ProgramMediator mediator, Stage stage, Main main, Player player) {
         this(mediator, stage, main);
         this.playerEdit = player;
@@ -60,11 +62,13 @@ public class PlayerSettings {
 
     @FXML
     private void initialize() {
-        name.setText(playerEdit.getName());
-        number.setText(""+playerEdit.getNumber());
-        position.setValue(String.valueOf(playerEdit.getPosition()));
-        isInjured.setSelected(playerEdit.isInjured());
-        isSuspended.setSelected(playerEdit.isInjured());
+        if(main.getEdit()==true) {
+            name.setText(playerEdit.getName());
+            number.setText("" + playerEdit.getNumber());
+            position.setValue(String.valueOf(playerEdit.getPosition()));
+            isInjured.setSelected(playerEdit.isInjured());
+            isSuspended.setSelected(playerEdit.isInjured());
+        }
     }
 
     public Parent load() throws IOException {

@@ -22,7 +22,7 @@ public class Match implements Serializable
     * @param place the place of the match will be set
     * @param opponent the opponent of the match will be set
     */
-   public Match(String type, MyDate date, String place, String opponent)
+   public Match(MyDate date, String opponent, String place, String type)
    {
       this.type = type;
       this.date = date;
@@ -37,12 +37,13 @@ public class Match implements Serializable
     * @param place the place of the match will be set
     * @param  type the type of the match will be set
     */
-   public Match( MyDate date,String opponent, String place,String type)
+   public Match( MyDate date,String opponent, String place,String type,PlayerList team)
    {
       this.date= date;
       this.opponent=opponent;
       this.place = place;
       this.type= type;
+      this.team=team;
    }
    
    /**
@@ -122,7 +123,7 @@ public class Match implements Serializable
    public String toString()
    {
       return "Type: " + type + ", date: " + date + ", place: " + place
-            + ", opponent: " + opponent + ".";
+            + ", opponent: " + opponent + "." + team.toString();
    }
    
    /**
