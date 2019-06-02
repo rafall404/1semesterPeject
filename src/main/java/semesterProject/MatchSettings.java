@@ -60,6 +60,18 @@ public class MatchSettings {
     private Main main;
     private Match matchEdit;
 
+    public MatchSettings(ProgramMediator mediator, Stage stage,Main main) {
+        this.main= main;
+        this.mediator = mediator;
+        this.stage = stage;
+
+    }
+
+    public MatchSettings(ProgramMediator mediator,Stage stage,Main main, Match match) {
+        this(mediator,stage,main);
+        this.matchEdit = match;
+    }
+
     public TableColumn<Player, Integer> getListNumberCol() {
         return listNumberCol;
     }
@@ -73,21 +85,10 @@ public class MatchSettings {
     }
 
 
-    public MatchSettings(ProgramMediator mediator, Stage stage,Main main) {
-        this.main= main;
-        this.mediator = mediator;
-        this.stage = stage;
-
-    }
-
-    public MatchSettings(ProgramMediator mediator,Stage stage,Main main, Match match) {
-        this(mediator,stage,main);
-        this.matchEdit = match;
-    }
-
     @FXML
     private void initialize() {
-        if(main.getEdit()==true) {
+		System.out.println("MATCH EDIT : " + matchEdit);
+        if(matchEdit != null) {
             //here should be date
             opponent.setText(matchEdit.getOpponent());
             place.setAccessibleText(matchEdit.getPlace());
