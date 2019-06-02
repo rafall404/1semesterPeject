@@ -84,18 +84,6 @@ public class Main extends Application {
 
 	private ProgramMediator mediator;
 
-	//Flag for EDIT player or ADDing new player
-	private boolean edit = false;
-
-	public boolean getEdit(){
-		return edit;
-	}
-
-	public void setEdit(boolean edit){
-		this.edit = edit;
-	}
-
-
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setTitle("VIA Club");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
@@ -183,8 +171,6 @@ public class Main extends Application {
 		addMatchStage.setTitle("Add Match");
 		addMatchStage.setScene(new Scene(root));
 
-		setEdit(false);
-
 		System.out.println(mediator.getNumberOfPlayers());
 		addMatchStage.show();
 
@@ -199,8 +185,6 @@ public class Main extends Application {
 		System.out.println("CREATE STAGE: " + addPlayerStage);
 		addMatchStage.setTitle("Add Player");
 		addMatchStage.setScene(new Scene(root));
-
-		setEdit(true);
 
 		addMatchStage.show();
 	}
@@ -223,8 +207,6 @@ public class Main extends Application {
 		addPlayerStage.setTitle("Add Player");
 		addPlayerStage.setScene(new Scene(root));
 
-		setEdit(false);
-
 
 		addPlayerStage.show();
 	}
@@ -240,8 +222,6 @@ public class Main extends Application {
 		System.out.println("CREATE STAGE: " + addPlayerStage);
 		addPlayerStage.setTitle("Add Player");
 		addPlayerStage.setScene(new Scene(root));
-
-		setEdit(true);
 
 		addPlayerStage.show();
 
