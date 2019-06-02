@@ -22,53 +22,37 @@ import static javafx.application.Application.launch;
 
 
 public class MatchSettings {
-    @FXML
-    private DatePicker date;
-    @FXML
-    private TextField opponent;
-    @FXML
-    private ComboBox place;
-    @FXML
-    private ComboBox type;
-    @FXML
-    private Button add;
-    @FXML
-    private Button cancel;
-    @FXML
-    private Button save;
-    @FXML
-    private Button remove;
-    @FXML
-    private TableColumn<Player, Integer> listNumberCol;
-    @FXML
-    private TableColumn<Player, String> listNameCol;
-    @FXML
-    private TableColumn<Player, Character> listPositionCol;
-    @FXML
-    private TableColumn<Player, Integer> teamNumberCol;
-    @FXML
-    private TableColumn<Player, String> teamNameCol;
-    @FXML
-    private TableColumn<Player, Character> teamPositionCol;
-    @FXML
-    private TableView<Player> listView;
-    @FXML
-    private TableView<Player> teamView;
+    @FXML private DatePicker date;
+    @FXML private TextField opponent;
+    @FXML private ComboBox place;
+    @FXML private ComboBox type;
+    @FXML private Button add;
+    @FXML private Button cancel;
+    @FXML private Button save;
+    @FXML private Button remove;
+    @FXML private TableColumn<Player, Integer> listNumberCol;
+    @FXML private TableColumn<Player, String> listNameCol;
+    @FXML private TableColumn<Player, Character> listPositionCol;
+    @FXML private TableColumn<Player, Integer> teamNumberCol;
+    @FXML private TableColumn<Player, String> teamNameCol;
+    @FXML private TableColumn<Player, Character> teamPositionCol;
+    @FXML private TableView<Player> listView;
+    @FXML private TableView<Player> teamView;
 
     private Stage stage;
     private ProgramMediator mediator;
-    private Main main;
     private Match matchEdit;
+    private MainView mainView;
 
-    public MatchSettings(ProgramMediator mediator, Stage stage,Main main) {
-        this.main= main;
+    public MatchSettings(ProgramMediator mediator, Stage stage,MainView mainView) {
         this.mediator = mediator;
         this.stage = stage;
+        this.mainView = mainView;
 
     }
 
-    public MatchSettings(ProgramMediator mediator,Stage stage,Main main, Match match) {
-        this(mediator,stage,main);
+    public MatchSettings(ProgramMediator mediator,Stage stage,MainView mainView, Match match) {
+        this(mediator,stage,mainView);
         this.matchEdit = match;
     }
 
@@ -89,7 +73,7 @@ public class MatchSettings {
     private void initialize() {
 		System.out.println("MATCH EDIT : " + matchEdit);
         if(matchEdit != null) {
-            //here should be date
+
             opponent.setText(matchEdit.getOpponent());
             place.setAccessibleText(matchEdit.getPlace());
             type.setAccessibleText(matchEdit.getType());
@@ -130,7 +114,6 @@ public class MatchSettings {
             listView.getItems().clear();
 
             for (int n = 0; n < mediator.getNumberOfPlayers(); n++) {
-
 
                 listView.getItems().add(new Player(mediator.getPlayer(n).getNumber(), mediator.getPlayer(n).getName(), mediator.getPlayer(n).getPosition()));
                 listNameCol.setCellValueFactory(new PropertyValueFactory<Player, String>("name"));
@@ -217,8 +200,7 @@ public class MatchSettings {
             }
 
         }
-        main.updateMatches();
-        main.getMatchesTable().refresh();
+        mainView.updateMatches();
 
     }
 

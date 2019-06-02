@@ -17,38 +17,31 @@ import javafx.stage.Stage;
 
 public class PlayerSettings {
 
-    @FXML
-    private TextField name;
-    @FXML
-    private TextField number;
-    @FXML
-    private ComboBox<String> position;
-    @FXML
-    private CheckBox isInjured;
-    @FXML
-    private CheckBox isSuspended;
-    @FXML
-    private Button saveButton;
-    @FXML
-    private Button close;
+    @FXML private TextField name;
+    @FXML private TextField number;
+    @FXML private ComboBox<String> position;
+    @FXML private CheckBox isInjured;
+    @FXML private CheckBox isSuspended;
+    @FXML private Button saveButton;
+    @FXML private Button close;
 
-    private ProgramMediator mediator;
     private Stage stage;
-    private Main main;
+    private ProgramMediator mediator;
     private Player playerEdit;
+    private MainView mainView;
 
+    public PlayerSettings(ProgramMediator mediator, Stage stage,MainView mainView) {
+        this.mediator = mediator;
+        this.stage = stage;
+        this.mainView = mainView;
+    }
 
-
-    public PlayerSettings(ProgramMediator mediator, Stage stage, Main main, Player player) {
-        this(mediator, stage, main);
+    public PlayerSettings(ProgramMediator mediator, Stage stage,MainView mainView ,Player player) {
+        this(mediator, stage,mainView);
         this.playerEdit = player;
     }
 
-    public PlayerSettings(ProgramMediator mediator, Stage stage, Main main) {
-        this.mediator = mediator;
-        this.stage = stage;
-        this.main = main;
-    }
+
 
     @FXML
     private void initialize() {
@@ -116,7 +109,7 @@ public class PlayerSettings {
             }
         }
         mediator.editPlayer(playerEdit);
-        main.updatePlayers();
+        mainView.updateListAvailablePlayers();
 
     }
 

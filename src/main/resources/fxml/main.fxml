@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="813.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="830.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
 	<tabs>
 		<Tab text="Matches">
 			<content>
@@ -27,14 +27,14 @@
 					<right>
 						<VBox prefHeight="561.0" prefWidth="148.0" BorderPane.alignment="CENTER">
 							<children>
-								<Button fx:id="AddMatch" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openMatchEdit" text="Add Match" />
-                        <Button maxWidth="1.7976931348623157E308" onAction="#editMatchesEdit" mnemonicParsing="false" text="Edit Match" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#matchRemoveButtonAction" text="Remove Matches" />
+								<Button fx:id="addMatch" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createMatch" text="Add Match" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editMatch" text="Edit Match" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#removeMatchButtonAction" text="Remove Matches" />
 								<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Print" />
 								<Region VBox.vgrow="ALWAYS" />
-								<Button maxWidth="1.7976931348623157E308" onAction="#upcomingMatchesAction" mnemonicParsing="false" text="Upcoming Matches" />
-								<Button maxWidth="1.7976931348623157E308" onAction="#historyMatchesAction" mnemonicParsing="false" text="History of Matches" />
-								<Button maxWidth="1.7976931348623157E308" onAction="#allMatchesAction" mnemonicParsing="false" text="All Matches" />
+								<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#upcomingMatchesAction" text="Upcoming Matches" />
+								<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#historyOfMatchesAction" text="History of Matches" />
+								<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#allMatchesAction" text="All Matches" />
 							</children>
 						</VBox>
 					</right>
@@ -47,20 +47,20 @@
 					<right>
 						<VBox prefHeight="561.0" prefWidth="148.0" BorderPane.alignment="CENTER">
 							<children>
-								<Button fx:id="AddPlayer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openPlayerEdit" text="Add Player" />
-                                <Button fx:id="editPlayer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editPlayerAction" text="Edit Player" />
-								<Button fx:id="removeButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#removeButtonAction" text="Remove Players" />
+								<Button fx:id="addPlayer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createPlayer" text="Add Player" />
+                                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editPlayer" text="Edit Player" />
+								<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#removePlayerButtonAction" text="Remove Players" />
 							</children>
 						</VBox>
 					</right>
 					<center>
 						<TableView fx:id="players" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 							<columns>
-								<TableColumn fx:id="nameCol" prefWidth="344.0" text="Name" />
-								<TableColumn fx:id="numberCol" minWidth="0.0" text="Number" />
-								<TableColumn fx:id="positionCol" text="Position" />
-								<TableColumn fx:id="injuredCol" text="Injured" />
-								<TableColumn fx:id="suspendedCol" text="Suspended" />
+								<TableColumn fx:id="playerName" prefWidth="240.0" text="Name" />
+								<TableColumn fx:id="playerNumber" minWidth="0.0" prefWidth="57.0" text="Number" />
+								<TableColumn fx:id="playerPosition" prefWidth="207.0" text="Position" />
+								<TableColumn fx:id="playerInjured" text="Injured" />
+								<TableColumn fx:id="playerSuspended" text="Suspended" />
 							</columns>
 						</TableView>
 					</center>
