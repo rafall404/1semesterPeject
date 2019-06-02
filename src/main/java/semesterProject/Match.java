@@ -1,6 +1,7 @@
 package semesterProject;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
@@ -16,14 +17,16 @@ public class Match implements Serializable
    private String place;
    private String opponent;
    private PlayerList team;
+   private LocalTime time;
    /**
     * @param type the type of the match will be set
     * @param date the date of the match will be set
     * @param place the place of the match will be set
     * @param opponent the opponent of the match will be set
     */
-   public Match(MyDate date, String opponent, String place, String type)
+   public Match(MyDate date, LocalTime time, String opponent, String place, String type)
    {
+      this.time = time;
       this.type = type;
       this.date = date;
       this.place = place;
@@ -44,6 +47,10 @@ public class Match implements Serializable
       this.place = place;
       this.type= type;
       this.team=team;
+   }
+
+   public void setTime(LocalTime time){
+      this.time = time;
    }
    
    /**
