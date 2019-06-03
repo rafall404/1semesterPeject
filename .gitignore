@@ -17,3 +17,5 @@ bin
 tags
 Session.vim
 .gradletasknamecache
+matches.bin
+players.bin
