@@ -113,5 +113,8 @@ public class PlayerSettings {
 
     }
 
+	@FXML
+	private void closeButtonAction() {
+		stage.close();
+	}
 }
-

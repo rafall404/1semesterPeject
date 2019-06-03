@@ -101,6 +101,10 @@ public class ProgramMediator
 		playerAdapter.savePlayers(playerList);
 	}
 
+	public void editMatch(Match match) {
+		matchesAdapter.saveMatches(matchesList);
+	}
+
 	/**
 	 *  gets the information about object at position @param
 	 * @param index is the parameter that the use enter to pick object at position

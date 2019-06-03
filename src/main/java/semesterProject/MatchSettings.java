@@ -82,7 +82,7 @@ public class MatchSettings {
     }
 
     public Parent load() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MatchSettings.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/matchSettings.fxml"));
         loader.setController(this);
         return loader.load();
     }
@@ -163,16 +163,16 @@ public class MatchSettings {
                 }
 
                 if (!duplicates) {
-
                     mediator.addMatch(match);
                     stage.close();
                 }
             } else {
                 matchEdit.setLocalDateTime(localDateTime);
-                matchEdit.setOpponent(opponent.toString());
+                matchEdit.setOpponent(opponent.getText());
                 matchEdit.setPlace(matchPlace);
                 matchEdit.setType(matchtype);
                 matchEdit.setPlayerList(tp);
+				mediator.editMatch(matchEdit);
                 stage.close();
             }
 

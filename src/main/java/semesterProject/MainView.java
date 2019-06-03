@@ -142,10 +142,12 @@ public class MainView {
     }
     public void updateMatches() {
         matches.setItems(FXCollections.observableList(mediator.getAllMatches().convertToAList()));
+		matches.refresh();
     }
     public void updateListAvailablePlayers() {
 
         players.setItems(FXCollections.observableList(mediator.getAllPlayers().convertToAList()));
+		players.refresh();
     }
 
 
