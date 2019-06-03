@@ -113,27 +113,5 @@ public class PlayerSettings {
 
     }
 
-    public void closeButtonAction(ActionEvent e) {
-        stage.hide();
-    }
-
-    public TextField getName() {
-        return this.name;
-    }
-
-    public TextField getNumber() {
-        return number;
-    }
-
-    public ComboBox<String> getPosition() {
-        return position;
-    }
-
-    public CheckBox getIsInjured() {
-        return isInjured;
-    }
-
-    public CheckBox getIsSuspended() {
-        return isSuspended;
-    }
 }
+

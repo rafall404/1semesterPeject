@@ -1,6 +1,8 @@
 package semesterProject;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -12,47 +14,61 @@ import java.util.ArrayList;
 public class Match implements Serializable
 {
    private String type;
-   private static final String[] TYEPS = { "" };
-   private MyDate date;
+   private LocalDateTime localDateTime;
    private String place;
    private String opponent;
    private PlayerList team;
-   private LocalTime time;
+
    /**
-    * @param type the type of the match will be set
-    * @param date the date of the match will be set
-    * @param place the place of the match will be set
-    * @param opponent the opponent of the match will be set
+    *
+    * @param localDateTime
+    * @param opponent
+    * @param place
+    * @param type
     */
-   public Match(MyDate date, LocalTime time, String opponent, String place, String type)
+   public Match(LocalDateTime localDateTime, String opponent, String place, String type)
    {
-      this.time = time;
+      this.localDateTime = localDateTime;
       this.type = type;
-      this.date = date;
       this.place = place;
       this.opponent = opponent;
       team = new PlayerList();
    }
-   
+
    /**
-    * @param date the date of the match will be set
-    * @param  opponent the opponent of the match will be set
-    * @param place the place of the match will be set
-    * @param  type the type of the match will be set
+    *
+    * @param localDateTime
+    * @param opponent
+    * @param place
+    * @param type
+    * @param team
     */
-   public Match( MyDate date,String opponent, String place,String type,PlayerList team)
-   {
-      this.date= date;
-      this.opponent=opponent;
+
+   public Match( LocalDateTime localDateTime,String opponent, String place,String type,PlayerList team) {
+      this.localDateTime = localDateTime;
+      this.opponent = opponent;
       this.place = place;
-      this.type= type;
-      this.team=team;
+      this.type = type;
+      this.team = team;
+   }
+   public LocalDate getDate() {
+      return localDateTime.toLocalDate();
    }
 
-   public void setTime(LocalTime time){
-      this.time = time;
+   /**
+    *
+    * @param localDateTime
+    */
+   public void setLocalDateTime(LocalDateTime localDateTime)
+   {
+      this.localDateTime = localDateTime;
    }
-   
+   /*
+
+    */
+   public LocalDateTime getLocalDateTime() {
+      return localDateTime;
+   }
    /**
     * replaces the type object with type
     * @param type the type of the match will be replaced
@@ -69,25 +85,7 @@ public class Match implements Serializable
    {
       return type;
    }
-   
-   /**
-    * replaces the date object with date
-    * @param date the date of the match will be replaced
-    */
-   public void setDate(MyDate date)
-   {
-      this.date = date.copy();
-   }
-   
-   /**
-    * Gets a date object from the class
-    * @return the date of Match
-    */
-   public MyDate getDate()
-   {
-      return date.copy();
-   }
-   
+
    /**
     * replaces the place object with place
     * @param place the place of the match will be replaced
@@ -129,8 +127,7 @@ public class Match implements Serializable
     */
    public String toString()
    {
-      return "Type: " + type + ", date: " + date + ", place: " + place
-            + ", opponent: " + opponent + "." + team.toString();
+      return "Type: " + type + ", date and time " + localDateTime+", place: "+ place +" + opponent + "+opponent+"team:" + team.toString();
    }
    
    /**
@@ -147,7 +144,7 @@ public class Match implements Serializable
 
       Match other = (Match) obj;
 
-      return type.equals(other.type) && date == other.date
+      return type.equals(other.type) && localDateTime.equals(other.localDateTime)
             && place.equals(other.place) && opponent.equals(other.opponent);
    }
    /**
@@ -155,7 +152,7 @@ public class Match implements Serializable
     */
    public boolean isMatchPassed()
    {
-      if (date.isBefore(date.today()))
+      if (localDateTime.isBefore(LocalDateTime.now()))
       {
          return true;
       }

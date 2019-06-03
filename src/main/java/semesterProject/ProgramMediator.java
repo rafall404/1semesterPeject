@@ -1,6 +1,9 @@
 package semesterProject;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A class containing a list of player objects
@@ -189,11 +192,11 @@ public class ProgramMediator
 
 	/**
 	 *
-	 * @param date
+	 * @param localDate
 	 * @return
 	 */
-	public MatchesList getMatchByDate(MyDate date) {
-		return matchesList.getMatchByDate(date);
+	public MatchesList getMatchByDate(LocalDate localDate) {
+		return matchesList.getMatchByDate(localDate);
 	}
 
 	/**
@@ -203,6 +206,10 @@ public class ProgramMediator
 	public void removeMatch(Match match)
 	{
 		matchesList.removeMatch(match);
+		matchesAdapter.saveMatches(matchesList);
+	}
+	public void removeMatches(List<Match> matches) {
+		matchesList.removeMatches(matches);
 		matchesAdapter.saveMatches(matchesList);
 	}
 

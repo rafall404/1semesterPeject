@@ -3,7 +3,6 @@ package semesterProject;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -11,6 +10,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class MainView {
@@ -29,7 +30,7 @@ public class MainView {
     @FXML private TableColumn<Player,Character> playerPosition;
     @FXML private TableColumn<Player,Boolean> playerInjured;
     @FXML private TableColumn<Player,Boolean> playerSuspended;
-    @FXML private TableColumn<Match,MyDate> matchDate;
+    @FXML private TableColumn<Match, LocalDateTime> matchDate;
     @FXML private TableColumn<Match,String> matchOpponent;
     @FXML private TableColumn<Match,String> matchPlace;
     @FXML private TableColumn<Match,String> matchType;
@@ -56,7 +57,7 @@ public class MainView {
         playerInjured.setCellValueFactory(new PropertyValueFactory<Player, Boolean>("Injured"));
         playerSuspended.setCellValueFactory(new PropertyValueFactory<Player, Boolean>("Suspended"));
 
-        matchDate.setCellValueFactory(new PropertyValueFactory<Match, MyDate>("Date"));
+        matchDate.setCellValueFactory(new PropertyValueFactory<Match, LocalDateTime>("LocalDateTime"));
         matchOpponent.setCellValueFactory(new PropertyValueFactory<Match, String>("Opponent"));
         matchPlace.setCellValueFactory(new PropertyValueFactory<Match, String>("Place"));
         matchType.setCellValueFactory(new PropertyValueFactory<Match, String>("Type"));
@@ -70,7 +71,7 @@ public class MainView {
     //CREATE MATCH
     public void createMatch(ActionEvent e) throws IOException {
         addMatchStage = new Stage();
-        MatchSettings match = new MatchSettings(mediator,addMatchStage,this,matches.getSelectionModel().getSelectedItem());
+        MatchSettings match = new MatchSettings(mediator,addMatchStage,this);
         Parent root = match.load();
         System.out.println("CREATE STAGE: " + addPlayerStage);
         addMatchStage.setTitle("Add Match");
