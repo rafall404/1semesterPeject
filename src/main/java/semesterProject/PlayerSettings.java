@@ -17,31 +17,38 @@ import javafx.stage.Stage;
 
 public class PlayerSettings {
 
-    @FXML private TextField name;
-    @FXML private TextField number;
-    @FXML private ComboBox<String> position;
-    @FXML private CheckBox isInjured;
-    @FXML private CheckBox isSuspended;
-    @FXML private Button saveButton;
-    @FXML private Button close;
+    @FXML
+    private TextField name;
+    @FXML
+    private TextField number;
+    @FXML
+    private ComboBox<String> position;
+    @FXML
+    private CheckBox isInjured;
+    @FXML
+    private CheckBox isSuspended;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Button close;
 
-    private Stage stage;
     private ProgramMediator mediator;
+    private Stage stage;
+    private Main main;
     private Player playerEdit;
-    private MainView mainView;
 
-    public PlayerSettings(ProgramMediator mediator, Stage stage,MainView mainView) {
-        this.mediator = mediator;
-        this.stage = stage;
-        this.mainView = mainView;
-    }
 
-    public PlayerSettings(ProgramMediator mediator, Stage stage,MainView mainView ,Player player) {
-        this(mediator, stage,mainView);
+
+    public PlayerSettings(ProgramMediator mediator, Stage stage, Main main, Player player) {
+        this(mediator, stage, main);
         this.playerEdit = player;
     }
 
-
+    public PlayerSettings(ProgramMediator mediator, Stage stage, Main main) {
+        this.mediator = mediator;
+        this.stage = stage;
+        this.main = main;
+    }
 
     @FXML
     private void initialize() {
@@ -109,12 +116,31 @@ public class PlayerSettings {
             }
         }
         mediator.editPlayer(playerEdit);
-        mainView.updateListAvailablePlayers();
+        main.updatePlayers();
 
     }
 
-	@FXML
-	private void closeButtonAction() {
-		stage.close();
-	}
+    public void closeButtonAction(ActionEvent e) {
+        stage.hide();
+    }
+
+    public TextField getName() {
+        return this.name;
+    }
+
+    public TextField getNumber() {
+        return number;
+    }
+
+    public ComboBox<String> getPosition() {
+        return position;
+    }
+
+    public CheckBox getIsInjured() {
+        return isInjured;
+    }
+
+    public CheckBox getIsSuspended() {
+        return isSuspended;
+    }
 }

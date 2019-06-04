@@ -1,10 +1,7 @@
 package semesterProject;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A class containing a Match object
@@ -147,16 +144,16 @@ public class MatchesList implements Serializable
    }
    /**
     * Gets a match from the List by type
-    * @param localDate the date in the list of the Match Object
+    * @param date the date in the list of the Match Object
     * @return the Match with type if one exists, else return null
     */
-   public MatchesList getMatchByDate(LocalDate localDate)
+   public MatchesList getMatchByDate(MyDate date)
    {
       MatchesList temp = new MatchesList();
 
       for (int i = 0; i < matches.size(); i++)
       {
-         if (matches.get(i).getLocalDateTime().toLocalDate().equals(localDate))
+         if (matches.get(i).getDate().equals(date))
             ;
          {
             temp.addMatch(matches.get(i));
@@ -172,16 +169,6 @@ public class MatchesList implements Serializable
    public void removeMatch(Match match)
    {
       matches.remove(match);
-   }
-
-   /**
-    * removes everything
-    * @param matches
-    */
-   public void removeMatches(List<Match> matches) {
-
-         matches.removeAll(matches);
-
    }
 
    public ArrayList<Match> convertToAList() {
