@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class Match implements Serializable
 {
    private String type;
-   private static final String[] TYEPS = { "" };
    private MyDate date;
    private String place;
    private String opponent;
