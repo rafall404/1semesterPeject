@@ -1,2 +1,0 @@
-# 1semesterPeject
-# Holla bitches. 
